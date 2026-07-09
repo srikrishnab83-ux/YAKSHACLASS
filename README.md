@@ -1649,4 +1649,1610 @@ After payment, send screenshot to admin for activation.`
   );
 
 };
-  
+//
+// ---------- DEFAULT TEMPLATES ----------
+//
+
+const templates = [
+
+{
+  icon:"🏫",
+  name:"School Website",
+  category:"School",
+  premium:false,
+  html:`
+
+<div class="block">
+<h1>School Name</h1>
+<p>Welcome to our school website.</p>
+</div>
+
+<div class="block">
+<h2>About Us</h2>
+<p>Add school information here.</p>
+</div>
+
+<div class="block">
+<h2>Admissions</h2>
+<p>Add admission details.</p>
+</div>
+
+`
+},
+
+{
+  icon:"🛒",
+  name:"Shop Website",
+  category:"Shop",
+  premium:false,
+  html:`
+
+<div class="block">
+<h1>Shop Name</h1>
+<p>Welcome to our store.</p>
+</div>
+
+<div class="block">
+<h2>Products</h2>
+<p>Add products here.</p>
+</div>
+
+`
+},
+
+{
+  icon:"🍽️",
+  name:"Restaurant",
+  category:"Restaurant",
+  premium:true,
+  html:`
+
+<div class="block">
+<h1>Restaurant Name</h1>
+<p>Welcome to our restaurant.</p>
+</div>
+
+<div class="block">
+<h2>Menu</h2>
+<p>Add menu items here.</p>
+</div>
+
+`
+},
+
+{
+  icon:"🎨",
+  name:"Artist Portfolio",
+  category:"Artist",
+  premium:true,
+  html:`
+
+<div class="block">
+<h1>Artist Name</h1>
+<p>Welcome to my portfolio.</p>
+</div>
+
+<div class="block">
+<h2>Gallery</h2>
+<p>Add artwork here.</p>
+</div>
+
+`
+}
+
+];
+
+
+
+//
+// ---------- TEMPLATE MARKETPLACE ----------
+//
+
+function loadTemplates(){
+
+  templateGrid.innerHTML = "";
+
+  templates.forEach(t=>{
+
+    const card =
+    document.createElement("div");
+
+    card.className =
+    "template-card";
+
+    card.innerHTML = `
+
+      <div class="template-icon">
+      ${t.icon}
+      </div>
+
+      <h3>${t.name}</h3>
+
+      <p>${t.category}</p>
+
+      ${
+        t.premium
+        ?
+        '<span class="badge">PRO</span>'
+        :
+        '<span class="badge">FREE</span>'
+      }
+
+      <br><br>
+
+      <button>
+      Use Template
+      </button>
+
+    `;
+
+    card
+      .querySelector("button")
+      .onclick = ()=>{
+
+      if(
+        t.premium &&
+        currentPlan === "FREE"
+      ){
+
+        showMessage(
+          "Upgrade to PRO to use this template."
+        );
+
+        return;
+      }
+
+      selectedTemplate =
+      t.html;
+
+      editorArea.innerHTML =
+      selectedTemplate;
+
+      openScreen(
+        "editorScreen"
+      );
+
+    };
+
+    templateGrid.appendChild(
+      card
+    );
+
+  });
+
+}
+
+loadTemplates();
+
+
+
+//
+// ---------- CREATE WEBSITE ----------
+//
+
+createWebsiteBtn.onclick =
+()=>{
+
+  currentWebsiteId = null;
+
+  siteTitle.value = "";
+  siteCategory.value = "";
+
+  uploadedLogo = "";
+  uploadedImages = [];
+
+  editorArea.innerHTML = `
+
+  <div class="block">
+  <h2>Header Section</h2>
+  <p>Edit your website content.</p>
+  </div>
+
+  <div class="block">
+  <h2>Content Section</h2>
+  <p>Add information here.</p>
+  </div>
+
+  `;
+
+  openScreen(
+    "editorScreen"
+  );
+
+};
+
+
+
+//
+// ---------- SIMPLE BLOCK BUILDER ----------
+//
+
+function addTextBlock(){
+
+  const block =
+  document.createElement("div");
+
+  block.className =
+  "block";
+
+  block.contentEditable =
+  true;
+
+  block.innerHTML =
+  "<h2>New Section</h2><p>Edit text...</p>";
+
+  editorArea.appendChild(
+    block
+  );
+
+}
+
+function addImageBlock(){
+
+  const block =
+  document.createElement("div");
+
+  block.className =
+  "block";
+
+  block.innerHTML = `
+
+  <h2>Image Section</h2>
+  <p>Add uploaded image here.</p>
+
+  `;
+
+  editorArea.appendChild(
+    block
+  );
+
+}
+
+
+
+//
+// ---------- DRAG STYLE BUILDER ----------
+//
+
+editorArea.ondblclick =
+()=>{
+
+  addTextBlock();
+
+};
+
+
+
+//
+// ---------- SAVE WEBSITE ----------
+//
+
+saveWebsiteBtn.onclick =
+async()=>{
+
+  if(!currentUser){
+
+    showMessage(
+      "Please login."
+    );
+
+    return;
+  }
+
+  const title =
+  siteTitle.value.trim();
+
+  const category =
+  siteCategory.value;
+
+  if(!title){
+
+    showMessage(
+      "Enter website name."
+    );
+
+    return;
+  }
+
+  try{
+
+    showLoading();
+
+    const websiteData = {
+
+      owner:
+      currentUser.uid,
+
+      title:
+      title,
+
+      category:
+      category,
+
+      html:
+      editorArea.innerHTML,
+
+      logo:
+      uploadedLogo,
+
+      gallery:
+      uploadedImages,
+
+      published:
+      false,
+
+      views:
+      0,
+
+      created:
+      new Date()
+
+    };
+
+    if(currentWebsiteId){
+
+      await updateDoc(
+
+        doc(
+          db,
+          "websites",
+          currentWebsiteId
+        ),
+
+        websiteData
+
+      );
+
+    }
+    else{
+
+      const ref =
+      await addDoc(
+
+        collection(
+          db,
+          "websites"
+        ),
+
+        websiteData
+
+      );
+
+      currentWebsiteId =
+      ref.id;
+
+      const userRef =
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      );
+
+      const userSnap =
+      await getDoc(
+        userRef
+      );
+
+      if(userSnap.exists()){
+
+        const total =
+        (
+          userSnap.data().websites
+          || 0
+        ) + 1;
+
+        await updateDoc(
+          userRef,
+          {
+            websites:
+            total
+          }
+        );
+
+      }
+
+    }
+
+    hideLoading();
+
+    await loadUserData();
+    await loadMyWebsites();
+
+    showMessage(
+      "Website saved successfully."
+    );
+
+    openScreen(
+      "appScreen"
+    );
+
+  }
+  catch(e){
+
+    hideLoading();
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+//
+// ---------- LOAD USER WEBSITES ----------
+//
+
+async function loadMyWebsites(){
+
+  websiteList.innerHTML = "";
+
+  if(!currentUser)
+  return;
+
+  const q =
+  query(
+
+    collection(
+      db,
+      "websites"
+    ),
+
+    where(
+      "owner",
+      "==",
+      currentUser.uid
+    )
+
+  );
+
+  const snap =
+  await getDocs(q);
+
+  snap.forEach(d=>{
+
+    const w =
+    d.data();
+
+    const card =
+    document.createElement("div");
+
+    card.className =
+    "site-card";
+
+    card.innerHTML = `
+
+      <h3>
+      ${w.title}
+      </h3>
+
+      <p>
+      ${w.category || "-"}
+      </p>
+
+      <p>
+      Views:
+      ${w.views || 0}
+      </p>
+
+      <p>
+      ${
+        w.published
+        ?
+        "🌐 Published"
+        :
+        "📝 Draft"
+      }
+      </p>
+
+      <br>
+
+      <button class="editBtn">
+      Edit
+      </button>
+
+      <button class="viewBtn">
+      View
+      </button>
+
+      <button class="deleteBtn danger">
+      Delete
+      </button>
+
+    `;
+
+    //
+    // edit
+    //
+
+    card
+      .querySelector(
+        ".editBtn"
+      )
+      .onclick =
+      ()=>{
+
+        currentWebsiteId =
+        d.id;
+
+        siteTitle.value =
+        w.title || "";
+
+        siteCategory.value =
+        w.category || "";
+
+        uploadedLogo =
+        w.logo || "";
+
+        uploadedImages =
+        w.gallery || [];
+
+        editorArea.innerHTML =
+        w.html || "";
+
+        openScreen(
+          "editorScreen"
+        );
+
+      };
+
+    //
+    // view
+    //
+
+    card
+      .querySelector(
+        ".viewBtn"
+      )
+      .onclick =
+      ()=>{
+
+        publicArea.innerHTML =
+        w.html || "";
+
+        openScreen(
+          "publicScreen"
+        );
+
+      };
+
+    //
+    // delete
+    //
+
+    card
+      .querySelector(
+        ".deleteBtn"
+      )
+      .onclick =
+      async()=>{
+
+        if(
+          !confirm(
+            "Delete this website?"
+          )
+        ) return;
+
+        await deleteDoc(
+          doc(
+            db,
+            "websites",
+            d.id
+          )
+        );
+
+        await loadMyWebsites();
+
+        showMessage(
+          "Website deleted."
+        );
+
+      };
+
+    websiteList.appendChild(
+      card
+    );
+
+  });
+
+}
+//
+// ---------- LOGO UPLOAD ----------
+//
+
+uploadLogoBtn.onclick =
+async()=>{
+
+  if(!logoInput.files.length){
+
+    showMessage(
+      "Please choose a logo."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    showLoading();
+
+    const file =
+    logoInput.files[0];
+
+    const fileRef =
+    ref(
+      storage,
+      "logos/" +
+      Date.now() +
+      "_" +
+      file.name
+    );
+
+    await uploadBytes(
+      fileRef,
+      file
+    );
+
+    uploadedLogo =
+    await getDownloadURL(
+      fileRef
+    );
+
+    hideLoading();
+
+    showMessage(
+      "Logo uploaded successfully."
+    );
+
+  }
+  catch(e){
+
+    hideLoading();
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+
+//
+// ---------- GALLERY UPLOAD ----------
+//
+
+uploadGalleryBtn.onclick =
+async()=>{
+
+  if(!galleryInput.files.length){
+
+    showMessage(
+      "Please choose images."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    showLoading();
+
+    uploadedImages = [];
+
+    for(
+      let i=0;
+      i<galleryInput.files.length;
+      i++
+    ){
+
+      const file =
+      galleryInput.files[i];
+
+      const fileRef =
+      ref(
+        storage,
+        "gallery/" +
+        Date.now() +
+        "_" +
+        file.name
+      );
+
+      await uploadBytes(
+        fileRef,
+        file
+      );
+
+      const url =
+      await getDownloadURL(
+        fileRef
+      );
+
+      uploadedImages.push(
+        url
+      );
+
+    }
+
+    hideLoading();
+
+    showMessage(
+      uploadedImages.length +
+      " images uploaded."
+    );
+
+  }
+  catch(e){
+
+    hideLoading();
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+
+//
+// ---------- PUBLISH WEBSITE ----------
+//
+
+publishBtn.onclick =
+async()=>{
+
+  if(!currentWebsiteId){
+
+    showMessage(
+      "Save the website first."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    await updateDoc(
+
+      doc(
+        db,
+        "websites",
+        currentWebsiteId
+      ),
+
+      {
+
+        published:true
+
+      }
+
+    );
+
+    showMessage(
+      "Website published successfully."
+    );
+
+    await loadMyWebsites();
+
+  }
+  catch(e){
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+
+//
+// ---------- DOWNLOAD HTML ----------
+//
+
+downloadBtn.onclick =
+()=>{
+
+  const title =
+  siteTitle.value.trim() ||
+  "MyWebsite";
+
+  let galleryHtml = "";
+
+  uploadedImages.forEach(url=>{
+
+    galleryHtml +=
+
+    `
+    <img
+    src="${url}"
+    style="
+      max-width:250px;
+      margin:10px;
+      border-radius:10px;
+    ">
+    `;
+
+  });
+
+  const html =
+
+`
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>${title}</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+padding:20px;
+background:#f1f5f9;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+img{
+max-width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+${
+uploadedLogo
+?
+`<img
+src="${uploadedLogo}"
+style="
+max-width:200px;
+margin-bottom:20px;
+">`
+:
+""
+}
+
+${editorArea.innerHTML}
+
+<hr>
+
+<h2>
+Gallery
+</h2>
+
+${galleryHtml}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+`;
+
+  const blob =
+  new Blob(
+    [html],
+    {
+      type:
+      "text/html"
+    }
+  );
+
+  const url =
+  URL.createObjectURL(
+    blob
+  );
+
+  const a =
+  document.createElement(
+    "a"
+  );
+
+  a.href = url;
+
+  a.download =
+  title
+  .replaceAll(
+    " ",
+    "-"
+  )
+  +
+  ".html";
+
+  a.click();
+
+  URL.revokeObjectURL(
+    url
+  );
+
+};
+
+
+
+
+
+//
+// ---------- PUBLIC VIEWER ----------
+//
+
+async function openPublicWebsite(
+id
+){
+
+  try{
+
+    const snap =
+    await getDoc(
+
+      doc(
+        db,
+        "websites",
+        id
+      )
+
+    );
+
+    if(!snap.exists()){
+
+      publicArea.innerHTML =
+      "Website not found.";
+
+      openScreen(
+        "publicScreen"
+      );
+
+      return;
+
+    }
+
+    const data =
+    snap.data();
+
+    if(
+      !data.published
+    ){
+
+      publicArea.innerHTML =
+      "Website not published.";
+
+      openScreen(
+        "publicScreen"
+      );
+
+      return;
+
+    }
+
+    let logoHtml = "";
+
+    if(data.logo){
+
+      logoHtml =
+
+      `
+      <img
+      src="${data.logo}"
+      style="
+        max-width:200px;
+        margin-bottom:20px;
+      ">
+      `;
+
+    }
+
+    let galleryHtml = "";
+
+    if(
+      Array.isArray(
+        data.gallery
+      )
+    ){
+
+      data.gallery.forEach(url=>{
+
+        galleryHtml +=
+
+        `
+        <img
+        src="${url}"
+        style="
+          max-width:250px;
+          margin:10px;
+          border-radius:10px;
+        ">
+        `;
+
+      });
+
+    }
+
+    publicArea.innerHTML =
+
+    `
+    ${logoHtml}
+
+    ${data.html}
+
+    <hr>
+
+    <h2>
+    Gallery
+    </h2>
+
+    ${galleryHtml}
+
+    <br>
+
+    <button id="shareSiteBtn">
+
+    Share Website
+
+    </button>
+    `;
+
+    //
+    // increase view count
+    //
+
+    await updateDoc(
+
+      doc(
+        db,
+        "websites",
+        id
+      ),
+
+      {
+
+        views:
+        (
+          data.views || 0
+        ) + 1
+
+      }
+
+    );
+
+    //
+    // share
+    //
+
+    const shareBtn =
+    document.getElementById(
+      "shareSiteBtn"
+    );
+
+    if(shareBtn){
+
+      shareBtn.onclick =
+      async()=>{
+
+        const text =
+        "Check out my website: "
+        +
+        data.title;
+
+        if(
+          navigator.share
+        ){
+
+          try{
+
+            await navigator.share({
+
+              title:
+              data.title,
+
+              text:
+              text
+
+            });
+
+          }
+          catch(e){
+
+            console.log(
+              e
+            );
+
+          }
+
+        }
+        else{
+
+          navigator.clipboard
+          .writeText(
+            text
+          );
+
+          showMessage(
+            "Copied to clipboard."
+          );
+
+        }
+
+      };
+
+    }
+
+    openScreen(
+      "publicScreen"
+    );
+
+  }
+  catch(e){
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+}
+//
+// ---------- ANALYTICS DASHBOARD ----------
+//
+
+async function loadAnalytics(){
+
+  if(!currentUser)
+  return;
+
+  try{
+
+    const q =
+    query(
+      collection(db,"websites"),
+      where(
+        "owner",
+        "==",
+        currentUser.uid
+      )
+    );
+
+    const snap =
+    await getDocs(q);
+
+    let totalSites = 0;
+    let totalViews = 0;
+    let totalPublished = 0;
+
+    snap.forEach(d=>{
+
+      const w =
+      d.data();
+
+      totalSites++;
+
+      totalViews +=
+      w.views || 0;
+
+      if(w.published){
+
+        totalPublished++;
+
+      }
+
+    });
+
+    analyticsSites.innerText =
+    totalSites;
+
+    analyticsViews.innerText =
+    totalViews;
+
+    analyticsPublished.innerText =
+    totalPublished;
+
+    analyticsWhatsapp.innerText =
+    0;
+
+  }
+  catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+
+
+//
+// ---------- ADMIN DASHBOARD ----------
+//
+
+async function loadAdminDashboard(){
+
+  try{
+
+    //
+    // total users
+    //
+
+    const users =
+    await getDocs(
+      collection(
+        db,
+        "users"
+      )
+    );
+
+    //
+    // total websites
+    //
+
+    const sites =
+    await getDocs(
+      collection(
+        db,
+        "websites"
+      )
+    );
+
+    let premium = 0;
+
+    users.forEach(d=>{
+
+      const u =
+      d.data();
+
+      if(
+        u.plan === "PRO" ||
+        u.plan === "BUSINESS"
+      ){
+
+        premium++;
+
+      }
+
+    });
+
+    adminUsers.innerText =
+    users.size;
+
+    adminSites.innerText =
+    sites.size;
+
+    adminPremium.innerText =
+    premium;
+
+  }
+  catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+
+
+//
+// ---------- ANNOUNCEMENTS ----------
+//
+
+publishAnnouncementBtn.onclick =
+async()=>{
+
+  const text =
+  announcementText.value
+  .trim();
+
+  if(!text){
+
+    showMessage(
+      "Write an announcement."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    await addDoc(
+
+      collection(
+        db,
+        "announcements"
+      ),
+
+      {
+
+        text:
+        text,
+
+        created:
+        new Date()
+
+      }
+
+    );
+
+    announcementText.value =
+    "";
+
+    showMessage(
+      "Announcement published."
+    );
+
+  }
+  catch(e){
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+//
+// ---------- TEMPLATE MANAGER ----------
+//
+
+addTemplateBtn.onclick =
+async()=>{
+
+  const name =
+  templateName.value.trim();
+
+  const category =
+  templateCategory.value;
+
+  if(!name){
+
+    showMessage(
+      "Enter template name."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    await addDoc(
+
+      collection(
+        db,
+        "templates"
+      ),
+
+      {
+
+        name:
+        name,
+
+        category:
+        category,
+
+        premium:
+        true,
+
+        icon:
+        "🌐",
+
+        html:
+
+        `
+        <div class="block">
+        <h1>${name}</h1>
+        <p>
+        New premium template.
+        </p>
+        </div>
+        `,
+
+        created:
+        new Date()
+
+      }
+
+    );
+
+    templateName.value =
+    "";
+
+    showMessage(
+      "Template added."
+    );
+
+  }
+  catch(e){
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+//
+// ---------- LOAD CUSTOM TEMPLATES ----------
+//
+
+async function loadCustomTemplates(){
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "templates"
+      )
+    );
+
+    snap.forEach(d=>{
+
+      const t =
+      d.data();
+
+      templates.push({
+
+        icon:
+        t.icon || "🌐",
+
+        name:
+        t.name,
+
+        category:
+        t.category,
+
+        premium:
+        t.premium,
+
+        html:
+        t.html
+
+      });
+
+    });
+
+    loadTemplates();
+
+  }
+  catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+loadCustomTemplates();
+
+
+
+//
+// ---------- INITIAL APP SETUP ----------
+//
+
+window.addEventListener(
+"load",
+()=>{
+
+  hideLoading();
+
+  loadTemplates();
+
+});
+
+
+
+//
+// ---------- ADS FOR FREE USERS ----------
+//
+
+function showFreeAd(){
+
+  if(
+    currentPlan !==
+    "FREE"
+  ){
+
+    return;
+
+  }
+
+  const ad =
+  document.createElement(
+    "div"
+  );
+
+  ad.className =
+  "card";
+
+  ad.innerHTML =
+
+  `
+  <h3>
+  Saathi Website Builder
+  </h3>
+
+  <p>
+  Upgrade to PRO to remove ads.
+  </p>
+  `;
+
+  document
+    .querySelector(
+      "#appScreen .container"
+    )
+    .appendChild(
+      ad
+    );
+
+}
+
+setTimeout(
+showFreeAd,
+3000
+);
+
+
+//
+// ---------- SECURITY NOTE ----------
+//
+
+console.log(
+"Saathi Website Builder Started"
+);
+
+</script>
+
+</body>
+</html>
+
+
