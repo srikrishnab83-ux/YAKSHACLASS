@@ -1116,3 +1116,537 @@ const ADMIN_EMAIL =
 
 const ADMIN_PASSWORD =
 "admin123";
+//
+// ---------- HELPER FUNCTIONS ----------
+//
+
+function showLoading(){
+  loadingModal.classList.remove("hidden");
+}
+
+function hideLoading(){
+  loadingModal.classList.add("hidden");
+}
+
+function hideAllScreens(){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(s=>s.classList.remove("active"));
+
+}
+
+function openScreen(id){
+
+  hideAllScreens();
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+}
+
+function showMessage(msg){
+  alert(msg);
+}
+
+
+
+//
+// ---------- THEME SWITCHER ----------
+//
+
+function setTheme(theme){
+
+  document.body.className = "";
+
+  document.body.classList.add(theme);
+
+  localStorage.setItem(
+    "saathiTheme",
+    theme
+  );
+
+}
+
+let savedTheme =
+localStorage.getItem(
+  "saathiTheme"
+);
+
+if(savedTheme){
+
+  setTheme(savedTheme);
+
+}
+
+themeBlue.onclick =
+()=>setTheme(
+  "theme-blue"
+);
+
+themeDark.onclick =
+()=>setTheme(
+  "theme-dark"
+);
+
+themeGreen.onclick =
+()=>setTheme(
+  "theme-green"
+);
+
+themePurple.onclick =
+()=>setTheme(
+  "theme-purple"
+);
+
+
+
+//
+// ---------- AUTHENTICATION ----------
+//
+
+registerBtn.onclick =
+async()=>{
+
+  const email =
+  document
+    .getElementById("email")
+    .value
+    .trim();
+
+  const password =
+  document
+    .getElementById("password")
+    .value
+    .trim();
+
+  if(!email || !password){
+
+    showMessage(
+      "Enter email and password."
+    );
+
+    return;
+  }
+
+  try{
+
+    showLoading();
+
+    const result =
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        result.user.uid
+      ),
+      {
+
+        email:email,
+        plan:"FREE",
+        websites:0,
+        created:new Date()
+
+      }
+    );
+
+    hideLoading();
+
+    showMessage(
+      "Account created successfully."
+    );
+
+  }
+  catch(e){
+
+    hideLoading();
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+loginBtn.onclick =
+async()=>{
+
+  const email =
+  document
+    .getElementById("email")
+    .value
+    .trim();
+
+  const password =
+  document
+    .getElementById("password")
+    .value
+    .trim();
+
+  if(!email || !password){
+
+    showMessage(
+      "Enter email and password."
+    );
+
+    return;
+  }
+
+  try{
+
+    showLoading();
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }
+  catch(e){
+
+    hideLoading();
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+forgotBtn.onclick =
+async()=>{
+
+  const email =
+  document
+    .getElementById("email")
+    .value
+    .trim();
+
+  if(!email){
+
+    showMessage(
+      "Enter your email first."
+    );
+
+    return;
+  }
+
+  try{
+
+    await sendPasswordResetEmail(
+      auth,
+      email
+    );
+
+    showMessage(
+      "Password reset email sent."
+    );
+
+  }
+  catch(e){
+
+    showMessage(
+      e.message
+    );
+
+  }
+
+};
+
+
+
+
+logoutBtn.onclick =
+async()=>{
+
+  await signOut(auth);
+
+};
+
+
+
+
+//
+// ---------- AUTH STATE ----------
+//
+
+onAuthStateChanged(
+auth,
+async(user)=>{
+
+  hideLoading();
+
+  if(user){
+
+    currentUser = user;
+
+    topUser.innerText =
+    user.email;
+
+    userEmail.innerText =
+    user.email;
+
+    await loadUserData();
+
+    await loadMyWebsites();
+
+    openScreen(
+      "appScreen"
+    );
+
+  }
+  else{
+
+    currentUser = null;
+
+    topUser.innerText =
+    "Guest";
+
+    openScreen(
+      "loginScreen"
+    );
+
+  }
+
+});
+
+
+
+//
+// ---------- USER DATA ----------
+//
+
+async function loadUserData(){
+
+  if(!currentUser)
+  return;
+
+  try{
+
+    const snap =
+    await getDoc(
+      doc(
+        db,
+        "users",
+        currentUser.uid
+      )
+    );
+
+    if(snap.exists()){
+
+      const data =
+      snap.data();
+
+      currentPlan =
+      data.plan ||
+      "FREE";
+
+      userPlan.innerText =
+      currentPlan;
+
+      totalSites.innerText =
+      data.websites || 0;
+
+    }
+
+  }
+  catch(e){
+
+    console.log(e);
+
+  }
+
+}
+
+
+
+//
+// ---------- NAVIGATION ----------
+//
+
+marketBtn.onclick =
+()=>{
+
+  openScreen(
+    "templateScreen"
+  );
+
+};
+
+backDashboardBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+subscriptionBtn.onclick =
+()=>{
+
+  openScreen(
+    "subscriptionScreen"
+  );
+
+};
+
+backPlansBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+analyticsBtn.onclick =
+()=>{
+
+  openScreen(
+    "analyticsScreen"
+  );
+
+  loadAnalytics();
+
+};
+
+backAnalyticsBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+adminBtn.onclick =
+()=>{
+
+  openScreen(
+    "adminScreen"
+  );
+
+};
+
+adminBackBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+adminDashboardBackBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+publicBackBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+backBtn.onclick =
+()=>{
+
+  openScreen(
+    "appScreen"
+  );
+
+};
+
+
+
+//
+// ---------- ADMIN LOGIN ----------
+//
+
+adminLoginBtn.onclick =
+async()=>{
+
+  const email =
+  adminEmail.value.trim();
+
+  const password =
+  adminPassword.value.trim();
+
+  if(
+    email === ADMIN_EMAIL &&
+    password === ADMIN_PASSWORD
+  ){
+
+    adminPanel
+      .classList
+      .remove("hidden");
+
+    await loadAdminDashboard();
+
+  }
+  else{
+
+    showMessage(
+      "Invalid admin credentials."
+    );
+
+  }
+
+};
+
+
+
+//
+// ---------- SUBSCRIPTION BUTTONS ----------
+//
+
+buyProBtn.onclick =
+()=>{
+
+  showMessage(
+`Pay ₹99 to:
+
+9148014768@mbk
+
+After payment, send screenshot to admin for activation.`
+  );
+
+};
+
+buyBusinessBtn.onclick =
+()=>{
+
+  showMessage(
+`Pay ₹199 to:
+
+9148014768@mbk
+
+After payment, send screenshot to admin for activation.`
+  );
+
+};
+  
