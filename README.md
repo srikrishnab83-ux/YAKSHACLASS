@@ -344,7 +344,7 @@
   <p>Create QR codes for your links and profiles.</p>
 </div>
 
-      <div class="card">
+      <div class="card" id="hashtagCard">
         <i class="fas fa-hashtag"></i>
         <h3>Hashtag Generator</h3>
         <p>Generate hashtags for social media content.</p>
@@ -709,6 +709,45 @@ topBtn.onclick = function(){
 
   </div>
 </section>
+<!-- Hashtag Generator -->
+<section class="platforms" id="hashtagSection">
+  <div class="container">
+
+    <h2 class="section-title">
+      Hashtag Generator
+    </h2>
+
+    <div class="card">
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="keywordInput"
+          placeholder="Enter a keyword (Example: travel)">
+
+        <button
+          class="btn"
+          id="hashtagBtn">
+          Generate Hashtags
+        </button>
+
+      </div>
+
+      <div
+        id="hashtagResult"
+        style="
+          margin-top:40px;
+          font-size:18px;
+          line-height:2;
+          word-break:break-word;
+        ">
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- Footer -->
 <footer style="padding:40px 0; background:#020617;">
   <div class="container" style="text-align:center;">
@@ -957,6 +996,50 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const hashtagBtn =
+    document.getElementById("hashtagBtn");
+
+  if (!hashtagBtn) return;
+
+  hashtagBtn.addEventListener("click", function () {
+
+    const keyword =
+      document.getElementById("keywordInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+    if (keyword === "") {
+      alert("Please enter a keyword.");
+      return;
+    }
+
+    const hashtags = [
+      "#" + keyword,
+      "#" + keyword + "life",
+      "#" + keyword + "lover",
+      "#" + keyword + "gram",
+      "#" + keyword + "daily",
+      "#best" + keyword,
+      "#love" + keyword,
+      "#insta" + keyword,
+      "#" + keyword + "reels",
+      "#" + keyword + "video",
+      "#" + keyword + "creator",
+      "#" + keyword + "community"
+    ];
+
+    document.getElementById(
+      "hashtagResult"
+    ).innerHTML =
+      hashtags.join(" ");
+  });
 
 });
 </script>
