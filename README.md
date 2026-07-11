@@ -338,11 +338,11 @@
         <p>View title, description and other public information.</p>
       </div>
 
-      <div class="card">
-        <i class="fas fa-qrcode"></i>
-        <h3>QR Generator</h3>
-        <p>Create QR codes for your links and profiles.</p>
-      </div>
+      <div class="card" onclick="scrollToQR()">
+  <i class="fas fa-qrcode"></i>
+  <h3>QR Generator</h3>
+  <p>Create QR codes for your links and profiles.</p>
+</div>
 
       <div class="card">
         <i class="fas fa-hashtag"></i>
