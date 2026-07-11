@@ -184,6 +184,22 @@
   transition:all 0.3s ease;
   border:1px solid rgba(255,255,255,0.08);
 }
+ .platforms{
+  padding:80px 0;
+  animation:fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}   
 
 .card:hover{
   transform:translateY(-10px);
