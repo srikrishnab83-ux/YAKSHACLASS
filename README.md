@@ -676,7 +676,7 @@ topBtn.onclick = function(){
   </div>
 </section>
 <!-- QR Generator -->
-<section class="platforms">
+<section class="platforms" id="qrSection">
   <div class="container">
 
     <h2 class="section-title">
