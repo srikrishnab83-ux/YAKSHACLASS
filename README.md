@@ -296,7 +296,33 @@
 
   </div>
 </section>
+<section style="padding:30px 0;">
+  <div class="container">
 
+    <div class="search-box">
+
+      <button
+        class="btn"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        Thumbnail
+      </button>
+
+      <button
+        class="btn"
+        onclick="document.getElementById('qrSection').scrollIntoView()">
+        QR Generator
+      </button>
+
+      <button
+        class="btn"
+        onclick="document.getElementById('hashtagSection').scrollIntoView()">
+        Hashtag Generator
+      </button>
+
+    </div>
+
+  </div>
+</section>
 <section class="platforms">
   <div class="container">
 
