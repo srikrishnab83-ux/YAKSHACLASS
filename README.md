@@ -338,7 +338,7 @@
         <p>View title, description and other public information.</p>
       </div>
 
-      <div class="card" onclick="scrollToQR()">
+      <div class="card" id="qrCard">
   <i class="fas fa-qrcode"></i>
   <h3>QR Generator</h3>
   <p>Create QR codes for your links and profiles.</p>
@@ -943,12 +943,22 @@ window.addEventListener("load", function () {
 console.log("QRCode =", typeof QRCode);
 </script>
 <script>
-function scrollToQR() {
-  document.getElementById("qrSection")
-    .scrollIntoView({
-      behavior: "smooth"
+document.addEventListener("DOMContentLoaded", function () {
+
+  const qrCard = document.getElementById("qrCard");
+  const qrSection = document.getElementById("qrSection");
+
+  if (qrCard && qrSection) {
+    qrCard.style.cursor = "pointer";
+
+    qrCard.addEventListener("click", function () {
+      qrSection.scrollIntoView({
+        behavior: "smooth"
+      });
     });
-}
+  }
+
+});
 </script>
 </body>
 </html>
