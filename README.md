@@ -1021,18 +1021,25 @@ console.log("QRCode =", typeof QRCode);
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const qrCard = document.getElementById("qrCard");
-  const qrSection = document.getElementById("qrSection");
+  const links = [
+    ["qrCard", "qrSection"],
+    ["hashtagCard", "hashtagSection"]
+  ];
 
-  if (qrCard && qrSection) {
-    qrCard.style.cursor = "pointer";
+  links.forEach(([cardId, sectionId]) => {
+    const card = document.getElementById(cardId);
+    const section = document.getElementById(sectionId);
 
-    qrCard.addEventListener("click", function () {
-      qrSection.scrollIntoView({
-        behavior: "smooth"
+    if (card && section) {
+      card.style.cursor = "pointer";
+
+      card.addEventListener("click", function () {
+        section.scrollIntoView({
+          behavior: "smooth"
+        });
       });
-    });
-  }
+    }
+  });
 
 });
 </script>
