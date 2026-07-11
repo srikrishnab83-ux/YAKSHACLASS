@@ -493,39 +493,6 @@
 
   </div>
 </section>
-
-<!-- Footer -->
-<footer style="padding:40px 0; background:#020617;">
-  <div class="container" style="text-align:center;">
-
-    <h3 style="margin-bottom:20px;">
-      VidToolkit Pro
-    </h3>
-
-    <p style="color:#cbd5e1;">
-      All-in-One Creator Tools Platform
-    </p>
-
-    <p style="margin-top:20px;color:#94a3b8;">
-      © 2026 VidToolkit Pro. All Rights Reserved.
-    </p>
-
-  </div>
-</footer>
-
-<script>
-  const themeButton = document.querySelector('.theme-btn');
-
-  themeButton.addEventListener('click', () => {
-    if (document.body.style.background === 'white') {
-      document.body.style.background = '#0f172a';
-      document.body.style.color = '#ffffff';
-    } else {
-      document.body.style.background = 'white';
-      document.body.style.color = '#111827';
-    }
-  });
-</script>
 <!-- Statistics -->
 <section class="platforms">
   <div class="container">
@@ -698,6 +665,38 @@ topBtn.onclick = function(){
   </div>
 </section>
 
+<!-- Footer -->
+<footer style="padding:40px 0; background:#020617;">
+  <div class="container" style="text-align:center;">
+
+    <h3 style="margin-bottom:20px;">
+      VidToolkit Pro
+    </h3>
+
+    <p style="color:#cbd5e1;">
+      All-in-One Creator Tools Platform
+    </p>
+
+    <p style="margin-top:20px;color:#94a3b8;">
+      © 2026 VidToolkit Pro. All Rights Reserved.
+    </p>
+
+  </div>
+</footer>
+
+<script>
+  const themeButton = document.querySelector('.theme-btn');
+
+  themeButton.addEventListener('click', () => {
+    if (document.body.style.background === 'white') {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#ffffff';
+    } else {
+      document.body.style.background = 'white';
+      document.body.style.color = '#111827';
+    }
+  });
+</script>
 <style>
 
 /* Floating Background */
