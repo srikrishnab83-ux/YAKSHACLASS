@@ -783,45 +783,35 @@ subscribeBtn.forEach(btn => {
 
 </script>
 <script>
+// Typing Effect
+const title = "All-in-One Creator Tools Platform";
+const titleEl = document.getElementById("typing-title");
 
-/* Typing Effect */
+if (titleEl) {
+  let i = 0;
+  titleEl.innerHTML = "";
 
-const title =
-"All-in-One Creator Tools Platform";
-
-const titleEl =
-document.getElementById("typing-title");
-
-let i = 0;
-
-function typeEffect(){
-
-  if(i < title.length){
-
-    titleEl.innerHTML +=
-    title.charAt(i);
-
-    i++;
-
-    setTimeout(typeEffect,70);
+  function typeEffect() {
+    if (i < title.length) {
+      titleEl.innerHTML += title.charAt(i);
+      i++;
+      setTimeout(typeEffect, 70);
+    }
   }
+
+  typeEffect();
 }
 
-titleEl.innerHTML = "";
-typeEffect();
-
-/* Thumbnail Preview */
-
-<script>
+// Thumbnail Preview
 window.addEventListener("load", function () {
-
   const previewBtn = document.getElementById("previewBtn");
 
   if (!previewBtn) return;
 
   previewBtn.addEventListener("click", function () {
 
-    const url = document.getElementById("videoLink").value.trim();
+    const url =
+      document.getElementById("videoLink").value.trim();
 
     if (url === "") {
       alert("Please paste a YouTube URL.");
@@ -844,9 +834,11 @@ window.addEventListener("load", function () {
     const thumb =
       "https://img.youtube.com/vi/" +
       id +
-      "/maxresdefault.jpg";
+      "/hqdefault.jpg";
 
-    document.getElementById("thumbnailContainer").innerHTML =
+    document.getElementById(
+      "thumbnailContainer"
+    ).innerHTML =
       `
       <div class="card">
         <h3>Video Thumbnail</h3>
@@ -870,94 +862,7 @@ window.addEventListener("load", function () {
       </div>
       `;
   });
-
 });
-</script>
-  const url =
-  document
-  .getElementById("videoLink")
-  .value;
-
-  const match =
-  url.match(
-  /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
-
-  if(!match){
-
-    alert(
-    "Please enter a valid YouTube URL");
-
-    return;
-  }
-
-  const id = match[1];
-
-  const thumb =
-  `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-
-  document
-  .getElementById(
-  "thumbnailContainer")
-  .innerHTML =
-
-  `
-  <div class="card">
-
-    <h3>
-      Video Thumbnail
-    </h3>
-
-    <img
-      src="${thumb}"
-      style="
-      width:100%;
-      max-width:700px;
-      border-radius:20px;
-      margin-top:20px;">
-
-    <br><br>
-
-    <a
-      href="${thumb}"
-      target="_blank">
-
-      <button class="btn">
-        Open Image
-      </button>
-
-    </a>
-
-  </div>
-  `;
-});
-
-}
-
-/* Smooth Scrolling */
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(anchor => {
-
-  anchor
-  .addEventListener(
-  'click',
-  function(e){
-
-    e.preventDefault();
-
-    document
-    .querySelector(
-    this
-    .getAttribute('href'))
-    ?.scrollIntoView({
-
-      behavior:'smooth'
-
-    });
-  });
-});
-
 </script>
 </body>
 </html>
