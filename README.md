@@ -139,15 +139,25 @@
     }
 
     .btn{
-      padding:18px 30px;
-      border:none;
-      border-radius:14px;
-      background:linear-gradient(90deg,#7c3aed,#3b82f6);
-      color:#fff;
-      cursor:pointer;
-      font-size:16px;
-      font-weight:600;
-    }
+  padding:18px 30px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(90deg,#7c3aed,#3b82f6);
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:600;
+  transition:all 0.3s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(59,130,246,0.4);
+}
+
+.btn:active{
+  transform:scale(0.96);
+}
 
     /* Platforms */
     .section-title{
