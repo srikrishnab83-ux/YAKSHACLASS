@@ -305,3 +305,227 @@
 
   </div>
 </section>
+<!-- Popular Tools -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      Popular Creator Tools
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fas fa-image"></i>
+        <h3>Thumbnail Downloader</h3>
+        <p>Preview and download public video thumbnails.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Metadata Viewer</h3>
+        <p>View title, description and other public information.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-qrcode"></i>
+        <h3>QR Generator</h3>
+        <p>Create QR codes for your links and profiles.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-hashtag"></i>
+        <h3>Hashtag Generator</h3>
+        <p>Generate hashtags for social media content.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-link"></i>
+        <h3>Link Shortener</h3>
+        <p>Create shorter links for easy sharing.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-code"></i>
+        <h3>Embed Generator</h3>
+        <p>Generate embed codes for websites and blogs.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- AdSense Placeholder -->
+<section style="padding:60px 0;">
+  <div class="container">
+
+    <div class="card">
+      <h3>Advertisement Space</h3>
+      <p>
+        Google AdSense banner will appear here after approval.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Features -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      Why Choose VidToolkit Pro?
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fas fa-bolt"></i>
+        <h3>Fast</h3>
+        <p>Optimized for speed and performance.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Responsive</h3>
+        <p>Works perfectly on mobile, tablet and desktop.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Secure</h3>
+        <p>Simple and privacy-focused experience.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-rocket"></i>
+        <h3>SEO Friendly</h3>
+        <p>Built to attract search traffic and ad revenue.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Blog Preview -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      Latest Articles
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Best Creator Tools for YouTube</h3>
+        <p>
+          Discover useful tools that can improve your workflow.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Instagram Growth Tips</h3>
+        <p>
+          Learn strategies to improve reach and engagement.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Facebook Content Guide</h3>
+        <p>
+          Practical tips for creating engaging social content.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Is VidToolkit Pro free?</h3>
+        <p>Yes. Most creator tools are available for free.</p>
+      </div>
+
+      <div class="card">
+        <h3>Can I use it on mobile?</h3>
+        <p>Yes. The website is fully mobile responsive.</p>
+      </div>
+
+      <div class="card">
+        <h3>Will more tools be added?</h3>
+        <p>Yes. New creator utilities will be released regularly.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact -->
+<section style="padding:80px 0;">
+  <div class="container">
+
+    <h2 class="section-title">
+      Contact Us
+    </h2>
+
+    <div class="card">
+
+      <h3>Get in Touch</h3>
+      <p>Email: support@vidtoolkitpro.com</p>
+      <p>Website: www.vidtoolkitpro.com</p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding:40px 0; background:#020617;">
+  <div class="container" style="text-align:center;">
+
+    <h3 style="margin-bottom:20px;">
+      VidToolkit Pro
+    </h3>
+
+    <p style="color:#cbd5e1;">
+      All-in-One Creator Tools Platform
+    </p>
+
+    <p style="margin-top:20px;color:#94a3b8;">
+      © 2026 VidToolkit Pro. All Rights Reserved.
+    </p>
+
+  </div>
+</footer>
+
+<script>
+  const themeButton = document.querySelector('.theme-btn');
+
+  themeButton.addEventListener('click', () => {
+    if (document.body.style.background === 'white') {
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#ffffff';
+    } else {
+      document.body.style.background = 'white';
+      document.body.style.color = '#111827';
+    }
+  });
+</script>
+
+</body>
+</html>
