@@ -526,6 +526,102 @@
     }
   });
 </script>
+<!-- Statistics -->
+<section class="platforms">
+  <div class="container">
 
+    <h2 class="section-title">
+      Trusted by Creators Worldwide
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fas fa-users"></i>
+        <h3 id="users">0</h3>
+        <p>Creators Using Our Tools</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-tools"></i>
+        <h3 id="tools">0</h3>
+        <p>Professional Tools</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-globe"></i>
+        <h3 id="visits">0</h3>
+        <p>Monthly Visits</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Back To Top Button -->
+<button id="topBtn">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<style>
+#topBtn{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  width:55px;
+  height:55px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(90deg,#7c3aed,#3b82f6);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  display:none;
+  z-index:999;
+}
+</style>
+
+<script>
+// Counter Animation
+function animateValue(id, start, end, duration){
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let step = Math.abs(Math.floor(duration / range));
+
+  let timer = setInterval(function () {
+    current += increment;
+    document.getElementById(id).innerHTML =
+      current.toLocaleString() + "+";
+
+    if (current == end) {
+      clearInterval(timer);
+    }
+  }, step);
+}
+
+animateValue("users",0,15000,2000);
+animateValue("tools",0,50,2000);
+animateValue("visits",0,100000,2500);
+
+// Back To Top
+const topBtn = document.getElementById("topBtn");
+
+window.onscroll = function(){
+  if(document.documentElement.scrollTop > 300){
+    topBtn.style.display = "block";
+  }else{
+    topBtn.style.display = "none";
+  }
+};
+
+topBtn.onclick = function(){
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+};
+</script>
 </body>
 </html>
