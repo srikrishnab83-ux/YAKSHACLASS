@@ -942,5 +942,13 @@ window.addEventListener("load", function () {
 <script>
 console.log("QRCode =", typeof QRCode);
 </script>
+<script>
+function scrollToQR() {
+  document.getElementById("qrSection")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+</script>
 </body>
 </html>
