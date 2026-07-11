@@ -158,7 +158,38 @@
 .btn:active{
   transform:scale(0.96);
 }
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
 
+@media(max-width:768px){
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:80px;
+    right:20px;
+    background:#1e293b;
+    padding:20px;
+    border-radius:20px;
+    flex-direction:column;
+    gap:15px;
+    min-width:180px;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+}
     /* Platforms */
     .section-title{
       text-align:center;
@@ -251,7 +282,9 @@
         <a href="#">Blog</a>
         <a href="#">Contact</a>
       </div>
-
+<button class="menu-btn" id="menuBtn">
+  <i class="fas fa-bars"></i>
+</button>
       <button class="theme-btn">
         <i class="fas fa-moon"></i>
       </button>
@@ -1179,6 +1212,17 @@ document.addEventListener("DOMContentLoaded", function () {
       .innerHTML = tags.join(" ");
   });
 
+});
+</script>
+<script>
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.querySelector(".nav-links");
+
+menuBtn.addEventListener("click", function(){
+  navLinks.classList.toggle("active");
 });
 </script>
 </body>
