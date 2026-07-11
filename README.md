@@ -24,6 +24,9 @@
       box-sizing:border-box;
       font-family:'Poppins',sans-serif;
     }
+    html{
+  scroll-behavior:smooth;
+}
 
     body{
       background:#0f172a;
