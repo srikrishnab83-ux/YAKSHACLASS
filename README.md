@@ -937,5 +937,8 @@ window.addEventListener("load", function () {
 });
 
 </script>
+<script>
+console.log("QRCode =", typeof QRCode);
+</script>
 </body>
 </html>
