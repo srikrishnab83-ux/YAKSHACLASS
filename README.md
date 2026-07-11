@@ -232,11 +232,9 @@
 <section class="hero">
   <div class="container">
 
-    <h1>
-      All-in-One
-      <span class="gradient">Creator Tools</span>
-      Platform
-    </h1>
+    <h1 id="typing-title">
+  All-in-One Creator Tools Platform
+</h1>
 
     <p>
       Powerful utilities for YouTube, Instagram,
@@ -246,12 +244,24 @@
     </p>
 
     <div class="search-box">
-      <input type="text"
-             placeholder="Paste YouTube, Instagram or Facebook link">
-      <button class="btn">
-        Explore Tools
-      </button>
-    </div>
+
+  <input
+    type="text"
+    id="videoLink"
+    placeholder="Paste YouTube URL">
+
+  <button
+    class="btn"
+    id="previewBtn">
+    Preview Thumbnail
+  </button>
+
+</div>
+
+<div
+  id="thumbnailContainer"
+  style="margin-top:40px;">
+</div>
 
   </div>
 </section>
