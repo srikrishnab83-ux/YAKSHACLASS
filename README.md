@@ -623,5 +623,155 @@ topBtn.onclick = function(){
   });
 };
 </script>
+<!-- Floating Background -->
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+
+<!-- Testimonials -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      What Creators Say
+    </h2>
+
+    <div class="cards">
+
+      <div class="card testimonial">
+        <h3>★★★★★</h3>
+        <p>
+          Amazing collection of creator tools.
+          Simple and professional.
+        </p>
+        <strong>- YouTube Creator</strong>
+      </div>
+
+      <div class="card testimonial">
+        <h3>★★★★★</h3>
+        <p>
+          Fast and easy to use on mobile and desktop.
+        </p>
+        <strong>- Instagram Creator</strong>
+      </div>
+
+      <div class="card testimonial">
+        <h3>★★★★★</h3>
+        <p>
+          One of the best creator utility websites.
+        </p>
+        <strong>- Social Media Manager</strong>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section style="padding:80px 0;">
+  <div class="container">
+
+    <div class="card">
+
+      <h2 style="margin-bottom:20px;">
+        Stay Updated
+      </h2>
+
+      <p style="margin-bottom:30px;">
+        Get updates whenever we release new tools.
+      </p>
+
+      <div class="search-box">
+
+        <input
+          type="email"
+          placeholder="Enter your email">
+
+        <button class="btn">
+          Subscribe
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* Floating Background */
+.bg-circle{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(100px);
+  z-index:-1;
+  animation:float 10s infinite alternate;
+}
+
+.circle1{
+  width:300px;
+  height:300px;
+  background:#7c3aed;
+  top:-100px;
+  left:-100px;
+}
+
+.circle2{
+  width:350px;
+  height:350px;
+  background:#3b82f6;
+  bottom:-150px;
+  right:-100px;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(0px);
+  }
+  to{
+    transform:translateY(80px);
+  }
+}
+
+.testimonial{
+  min-height:250px;
+}
+
+.card{
+  backdrop-filter:blur(15px);
+}
+
+</style>
+
+<script>
+
+// Newsletter Button
+const subscribeBtn =
+document.querySelectorAll(".btn");
+
+subscribeBtn.forEach(btn => {
+  if(btn.innerText === "Subscribe"){
+    btn.addEventListener("click", function(){
+
+      const email =
+      this.previousElementSibling.value;
+
+      if(email === ""){
+        alert("Please enter your email.");
+        return;
+      }
+
+      alert(
+        "Thank you for subscribing!"
+      );
+
+      this.previousElementSibling.value =
+      "";
+    });
+  }
+});
+
+</script>
 </body>
 </html>
