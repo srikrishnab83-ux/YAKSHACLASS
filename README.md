@@ -909,10 +909,12 @@ window.addEventListener("load", function () {
 
   qrBtn.addEventListener("click", function () {
 
-    const text =
-      document.getElementById("qrText")
-      .value
-      .trim();
+  alert("QR button clicked");
+
+  const text =
+    document.getElementById("qrText")
+    .value
+    .trim();
 
     if (text === "") {
       alert("Please enter a URL.");
