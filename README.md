@@ -675,7 +675,40 @@ topBtn.onclick = function(){
 
   </div>
 </section>
+<!-- QR Generator -->
+<section class="platforms">
+  <div class="container">
 
+    <h2 class="section-title">
+      QR Code Generator
+    </h2>
+
+    <div class="card">
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="qrText"
+          placeholder="Paste any URL">
+
+        <button
+          class="btn"
+          id="qrBtn">
+          Generate QR
+        </button>
+
+      </div>
+
+      <div
+        id="qrContainer"
+        style="margin-top:40px;">
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- Footer -->
 <footer style="padding:40px 0; background:#020617;">
   <div class="container" style="text-align:center;">
@@ -864,6 +897,45 @@ window.addEventListener("load", function () {
       `;
   });
 });
+</script>
+<script>
+
+window.addEventListener("load", function () {
+
+  const qrBtn =
+    document.getElementById("qrBtn");
+
+  if (!qrBtn) return;
+
+  qrBtn.addEventListener("click", function () {
+
+    const text =
+      document.getElementById("qrText")
+      .value
+      .trim();
+
+    if (text === "") {
+      alert("Please enter a URL.");
+      return;
+    }
+
+    const container =
+      document.getElementById(
+        "qrContainer"
+      );
+
+    container.innerHTML = "";
+
+    new QRCode(container, {
+      text: text,
+      width: 250,
+      height: 250
+    });
+
+  });
+
+});
+
 </script>
 </body>
 </html>
