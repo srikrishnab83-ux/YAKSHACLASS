@@ -166,6 +166,33 @@
   font-size:24px;
   cursor:pointer;
 }
+    .tools-bar{
+  position:sticky;
+  top:75px;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:15px;
+  background:rgba(15,23,42,0.9);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.tool-btn{
+  border:none;
+  padding:12px 18px;
+  border-radius:30px;
+  background:#1e293b;
+  color:#fff;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+
+.tool-btn:hover{
+  transform:translateY(-2px);
+  background:#3b82f6;
+}
 
 @media(max-width:768px){
 
@@ -194,6 +221,14 @@
   opacity:1;
   visibility:visible;
   transform:translateY(0);
+}
+  .tools-bar{
+  overflow-x:auto;
+  justify-content:flex-start;
+}
+
+.tool-btn{
+  white-space:nowrap;
 }
 }
     /* Platforms */
@@ -275,6 +310,27 @@
 <body>
 
 <header>
+  <div class="tools-bar">
+
+  <button
+    class="tool-btn"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    📷 Thumbnail
+  </button>
+
+  <button
+    class="tool-btn"
+    onclick="document.getElementById('qrSection').scrollIntoView()">
+    🔳 QR
+  </button>
+
+  <button
+    class="tool-btn"
+    onclick="document.getElementById('hashtagSection').scrollIntoView()">
+    #️⃣ Hashtags
+  </button>
+
+</div>
   <div class="container">
     <nav>
 
