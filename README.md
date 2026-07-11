@@ -164,17 +164,18 @@
     }
 
     .card{
-      background:#1e293b;
-      padding:35px;
-      border-radius:25px;
-      text-align:center;
-      transition:0.3s;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+  background:#1e293b;
+  padding:35px;
+  border-radius:25px;
+  text-align:center;
+  transition:all 0.3s ease;
+  border:1px solid rgba(255,255,255,0.08);
+}
 
-    .card:hover{
-      transform:translateY(-10px);
-    }
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 40px rgba(59,130,246,0.25);
+}
 
     .card i{
       font-size:55px;
