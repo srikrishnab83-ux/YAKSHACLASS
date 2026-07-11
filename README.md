@@ -956,17 +956,39 @@ topBtn.onclick = function(){
 </footer>
 
 <script>
-  const themeButton = document.querySelector('.theme-btn');
+const themeButton =
+document.querySelector(".theme-btn");
 
-  themeButton.addEventListener('click', () => {
-    if (document.body.style.background === 'white') {
-      document.body.style.background = '#0f172a';
-      document.body.style.color = '#ffffff';
-    } else {
-      document.body.style.background = 'white';
-      document.body.style.color = '#111827';
-    }
-  });
+// Load saved theme
+if(localStorage.getItem("theme") === "light"){
+  document.body.style.background = "white";
+  document.body.style.color = "#111827";
+}
+
+themeButton.addEventListener("click", function(){
+
+  if(document.body.style.background === "white"){
+
+    document.body.style.background = "#0f172a";
+    document.body.style.color = "#ffffff";
+
+    localStorage.setItem(
+      "theme",
+      "dark"
+    );
+
+  }else{
+
+    document.body.style.background = "white";
+    document.body.style.color = "#111827";
+
+    localStorage.setItem(
+      "theme",
+      "light"
+    );
+  }
+
+});
 </script>
 <style>
 
