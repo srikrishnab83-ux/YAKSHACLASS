@@ -812,13 +812,67 @@ typeEffect();
 
 /* Thumbnail Preview */
 
-const previewBtn =
-document.getElementById("previewBtn");
+<script>
+window.addEventListener("load", function () {
 
-if(previewBtn){
+  const previewBtn = document.getElementById("previewBtn");
 
-previewBtn.addEventListener("click",()=>{
+  if (!previewBtn) return;
 
+  previewBtn.addEventListener("click", function () {
+
+    const url = document.getElementById("videoLink").value.trim();
+
+    if (url === "") {
+      alert("Please paste a YouTube URL.");
+      return;
+    }
+
+    let id = "";
+
+    if (url.includes("youtube.com/watch?v=")) {
+      id = url.split("v=")[1].split("&")[0];
+    }
+    else if (url.includes("youtu.be/")) {
+      id = url.split("youtu.be/")[1].split("?")[0];
+    }
+    else {
+      alert("Invalid YouTube URL");
+      return;
+    }
+
+    const thumb =
+      "https://img.youtube.com/vi/" +
+      id +
+      "/maxresdefault.jpg";
+
+    document.getElementById("thumbnailContainer").innerHTML =
+      `
+      <div class="card">
+        <h3>Video Thumbnail</h3>
+
+        <img
+          src="${thumb}"
+          style="
+            width:100%;
+            max-width:700px;
+            border-radius:20px;
+            margin-top:20px;
+          ">
+
+        <br><br>
+
+        <a href="${thumb}" target="_blank">
+          <button class="btn">
+            Open Image
+          </button>
+        </a>
+      </div>
+      `;
+  });
+
+});
+</script>
   const url =
   document
   .getElementById("videoLink")
