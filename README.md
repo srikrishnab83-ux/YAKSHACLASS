@@ -299,9 +299,6 @@
         font-size:38px;
       }
 
-      .nav-links{
-        display:none;
-      }
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -1233,50 +1230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const hashtagBtn =
-    document.getElementById("hashtagBtn");
-
-  if (!hashtagBtn) return;
-
-  hashtagBtn.addEventListener("click", function () {
-
-    const keyword =
-      document.getElementById("keywordInput")
-      .value
-      .trim()
-      .toLowerCase();
-
-    if (keyword === "") {
-      alert("Please enter a keyword.");
-      return;
-    }
-
-    const hashtags = [
-      "#" + keyword,
-      "#" + keyword + "life",
-      "#" + keyword + "lover",
-      "#" + keyword + "gram",
-      "#" + keyword + "daily",
-      "#best" + keyword,
-      "#love" + keyword,
-      "#insta" + keyword,
-      "#" + keyword + "reels",
-      "#" + keyword + "video",
-      "#" + keyword + "creator",
-      "#" + keyword + "community"
-    ];
-
-    document.getElementById(
-      "hashtagResult"
-    ).innerHTML =
-      hashtags.join(" ");
-  });
-
-});
-</script>
-<script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const hashtagBtn =
