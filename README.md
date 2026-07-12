@@ -1142,18 +1142,24 @@ window.addEventListener("load", function () {
       return;
     }
 
-    let id = "";
+   let id = "";
 
-    if (url.includes("youtube.com/watch?v=")) {
-      id = url.split("v=")[1].split("&")[0];
-    }
-    else if (url.includes("youtu.be/")) {
-      id = url.split("youtu.be/")[1].split("?")[0];
-    }
-    else {
-      alert("Invalid YouTube URL");
-      return;
-    }
+if (url.includes("watch?v=")) {
+  id = url.split("watch?v=")[1].split("&")[0];
+}
+else if (url.includes("youtu.be/")) {
+  id = url.split("youtu.be/")[1].split("?")[0];
+}
+else if (url.includes("/shorts/")) {
+  id = url.split("/shorts/")[1].split("?")[0];
+}
+else if (url.includes("/live/")) {
+  id = url.split("/live/")[1].split("?")[0];
+}
+else {
+  alert("Invalid YouTube URL");
+  return;
+}
 
     const thumb =
       "https://img.youtube.com/vi/" +
