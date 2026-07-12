@@ -1344,25 +1344,40 @@ if(shortBtn){
       "/?url=" +
       btoa(url);
 
-    document.getElementById(
-      "shortResult"
-    ).innerHTML =
-      `
-      <p><strong>Short Link:</strong></p>
+    document.getElementById("shortResult").innerHTML = `
+<p><strong>Short Link:</strong></p>
 
-      <input
-        value="${shortLink}"
-        style="
-          width:100%;
-          padding:15px;
-          margin-top:15px;
-          border-radius:12px;
-        "
-        readonly>
-      `;
-  });
+<input
+  id="generatedLink"
+  value="${shortLink}"
+  style="
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border-radius:12px;
+  "
+  readonly>
 
-}
+<br><br>
+
+<button class="btn" id="copyLinkBtn">
+  Copy Link
+</button>
+`;
+
+// Add listener AFTER creating the button
+document.getElementById("copyLinkBtn")
+.addEventListener("click", function () {
+
+  const link =
+    document.getElementById("generatedLink");
+
+  navigator.clipboard.writeText(link.value);
+
+  alert("Link copied!");
+});
+
+});
 </script>
 <script>
 const menuBtn =
