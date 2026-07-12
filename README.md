@@ -498,11 +498,11 @@
   <p>Generate hashtags for social media content.</p>
 </div>
 
-      <div class="card">
-        <i class="fas fa-link"></i>
-        <h3>Link Shortener</h3>
-        <p>Create shorter links for easy sharing.</p>
-      </div>
+    <div class="card" id="linkCard">
+  <i class="fas fa-link"></i>
+  <h3>Link Shortener</h3>
+  <p>Create shorter links for easy sharing.</p>
+</div>
 
       <div class="card">
         <i class="fas fa-code"></i>
@@ -938,7 +938,40 @@ topBtn.onclick = function(){
 
   </div>
 </section>
+<!-- Link Shortener -->
+<section class="platforms" id="linkSection">
+  <div class="container">
 
+    <h2 class="section-title">
+      Link Shortener
+    </h2>
+
+    <div class="card">
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="longLink"
+          placeholder="Paste any URL">
+
+        <button
+          class="btn"
+          id="shortBtn">
+          Shorten Link
+        </button>
+
+      </div>
+
+      <div
+        id="shortResult"
+        style="margin-top:40px;">
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- Footer -->
 <footer style="padding:40px 0; background:#020617;">
   <div class="container" style="text-align:center;">
@@ -1230,6 +1263,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
+const linkCard =
+document.getElementById("linkCard");
+
+const linkSection =
+document.getElementById("linkSection");
+
+if(linkCard && linkSection){
+
+  linkCard.style.cursor = "pointer";
+
+  linkCard.addEventListener("click", function(){
+
+    linkSection.scrollIntoView({
+      behavior: "smooth"
+    });
+
+  });
+}
+</script>
+<script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -1267,6 +1320,49 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+</script>
+<script>
+const shortBtn =
+document.getElementById("shortBtn");
+
+if(shortBtn){
+
+  shortBtn.addEventListener("click", function(){
+
+    const url =
+      document.getElementById("longLink")
+      .value
+      .trim();
+
+    if(url === ""){
+      alert("Please enter a URL.");
+      return;
+    }
+
+    const shortLink =
+      location.origin +
+      "/?url=" +
+      btoa(url);
+
+    document.getElementById(
+      "shortResult"
+    ).innerHTML =
+      `
+      <p><strong>Short Link:</strong></p>
+
+      <input
+        value="${shortLink}"
+        style="
+          width:100%;
+          padding:15px;
+          margin-top:15px;
+          border-radius:12px;
+        "
+        readonly>
+      `;
+  });
+
+}
 </script>
 <script>
 const menuBtn =
