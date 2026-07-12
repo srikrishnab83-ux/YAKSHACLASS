@@ -483,11 +483,11 @@
         <p>Preview and download public video thumbnails.</p>
       </div>
 
-      <div class="card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Metadata Viewer</h3>
-        <p>View title, description and other public information.</p>
-      </div>
+     <div class="card" onclick="scrollToMetadata()">
+  <i class="fas fa-chart-line"></i>
+  <h3>Metadata Viewer</h3>
+  <p>View title, description and other public information.</p>
+</div>
 
       <div class="card" id="qrCard">
   <i class="fas fa-qrcode"></i>
@@ -943,6 +943,50 @@ topBtn.onclick = function(){
 
   </div>
 </section>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- Metadata Viewer -->
+<section class="platforms" id="metadataSection">
+  <div class="container">
+
+    <h2 class="section-title">
+      YouTube Metadata Viewer
+    </h2>
+
+    <div class="card">
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="metadataLink"
+          placeholder="Paste YouTube URL">
+
+        <button
+          class="btn"
+          id="metadataBtn">
+          Get Information
+        </button>
+
+      </div>
+
+      <div
+        id="metadataContainer"
+        style="margin-top:40px;">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding:40px 0; background:#020617;">
 <!-- Footer -->
 <footer style="padding:40px 0; background:#020617;">
   <div class="container" style="text-align:center;">
@@ -1337,6 +1381,14 @@ document.getElementById("downloadQR")
   a.click();
 
 });
+</script>
+<script>
+function scrollToMetadata() {
+  document.getElementById("metadataSection")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
 </script>
 </body>
 </html>
