@@ -979,8 +979,6 @@ topBtn.onclick = function(){
 
 <!-- Footer -->
 <footer style="padding:40px 0; background:#020617;">
-<!-- Footer -->
-<footer style="padding:40px 0; background:#020617;">
   <div class="container" style="text-align:center;">
 
     <h3 style="margin-bottom:20px;">
@@ -1201,8 +1199,6 @@ window.addEventListener("load", function () {
 
   qrBtn.addEventListener("click", function () {
 
-  alert("QR button clicked");
-
   const text =
     document.getElementById("qrText")
     .value
@@ -1229,9 +1225,12 @@ window.addEventListener("load", function () {
   });
 
 });
-  document.getElementById(
-  "downloadQR"
-).style.display = "inline-block";
+ const downloadBtn =
+  document.getElementById("downloadQR");
+
+if (downloadBtn) {
+  downloadBtn.style.display = "inline-block";
+}
 
 </script>
 <script>
