@@ -1382,5 +1382,62 @@ function scrollToMetadata() {
     });
 }
 </script>
+<script>
+window.addEventListener("load", function () {
+
+  const metadataBtn =
+    document.getElementById("metadataBtn");
+
+  if (!metadataBtn) return;
+
+  metadataBtn.addEventListener("click", function () {
+
+    const url =
+      document.getElementById("metadataLink")
+      .value.trim();
+
+    if (url === "") {
+      alert("Please paste a YouTube URL.");
+      return;
+    }
+
+    let id = "";
+
+    if (url.includes("youtube.com/watch?v=")) {
+      id = url.split("v=")[1].split("&")[0];
+    }
+    else if (url.includes("youtu.be/")) {
+      id = url.split("youtu.be/")[1].split("?")[0];
+    }
+    else {
+      alert("Invalid YouTube URL");
+      return;
+    }
+
+    const thumb =
+      "https://img.youtube.com/vi/" +
+      id +
+      "/hqdefault.jpg";
+
+    document.getElementById(
+      "metadataContainer"
+    ).innerHTML = `
+      <div class="card">
+        <h3>Video Information</h3>
+        <p><strong>Video ID:</strong> ${id}</p>
+        <img
+          src="${thumb}"
+          style="
+            width:100%;
+            max-width:500px;
+            border-radius:20px;
+            margin-top:20px;
+          ">
+      </div>
+    `;
+  });
+
+});
+</script>
 </body>
 </html>
