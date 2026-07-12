@@ -917,16 +917,18 @@ topBtn.onclick = function(){
     <div class="card">
 
       <div class="search-box">
+
         <input
           type="text"
           id="keywordInput"
-          placeholder="Enter a keyword">
+          placeholder="Enter a keyword (Example: travel)">
 
         <button
           class="btn"
           id="hashtagBtn">
           Generate Hashtags
         </button>
+
       </div>
 
       <div
@@ -938,6 +940,8 @@ topBtn.onclick = function(){
           word-break:break-word;
         ">
       </div>
+
+    </div>
 
   </div>
 </section>
