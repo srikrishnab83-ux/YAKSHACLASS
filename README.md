@@ -1320,23 +1320,22 @@ menuBtn.addEventListener("click", function(){
 });
 </script>
 <script>
-document.getElementById(
-  "downloadQR"
-).addEventListener("click", function(){
+document.getElementById("downloadQR")
+.addEventListener("click", function () {
 
-  const img =
-    document.querySelector(
-      "#qrContainer img"
-    );
+  const canvas =
+    document.querySelector("#qrContainer canvas");
 
-  if(!img) return;
+  if (!canvas) {
+    alert("Please generate a QR code first.");
+    return;
+  }
 
-  const a =
-    document.createElement("a");
-
-  a.href = img.src;
+  const a = document.createElement("a");
+  a.href = canvas.toDataURL("image/png");
   a.download = "vidtoolkit-qr.png";
   a.click();
+
 });
 </script>
 </body>
