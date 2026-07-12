@@ -906,45 +906,6 @@ topBtn.onclick = function(){
 
   </div>
 </section>
-<!-- Hashtag Generator -->
-<section class="platforms" id="hashtagSection">
-  <div class="container">
-
-    <h2 class="section-title">
-      Hashtag Generator
-    </h2>
-
-    <div class="card">
-
-      <div class="search-box">
-
-        <input
-          type="text"
-          id="keywordInput"
-          placeholder="Enter a keyword (Example: travel)">
-
-        <button
-          class="btn"
-          id="hashtagBtn">
-          Generate Hashtags
-        </button>
-
-      </div>
-
-      <div
-        id="hashtagResult"
-        style="
-          margin-top:40px;
-          font-size:18px;
-          line-height:2;
-          word-break:break-word;
-        ">
-      </div>
-
-    </div>
-
-  </div>
-</section>
 
 <!-- Metadata Viewer -->
 <section class="platforms" id="metadataSection">
