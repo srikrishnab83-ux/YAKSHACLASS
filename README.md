@@ -939,15 +939,7 @@ topBtn.onclick = function(){
         ">
       </div>
 
-    </div>
-
   </div>
-</section>
-</div>
-
-</div>
-
-</div>
 </section>
 
 <!-- Metadata Viewer -->
