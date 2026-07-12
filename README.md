@@ -852,9 +852,16 @@ topBtn.onclick = function(){
       </div>
 
       <div
-        id="qrContainer"
-        style="margin-top:40px;">
-      </div>
+  id="qrContainer"
+  style="margin-top:40px;">
+</div>
+
+<button
+  class="btn"
+  id="downloadQR"
+  style="display:none; margin-top:20px;">
+  Download QR
+</button>
 
     </div>
 
@@ -1186,6 +1193,9 @@ window.addEventListener("load", function () {
   });
 
 });
+  document.getElementById(
+  "downloadQR"
+).style.display = "inline-block";
 
 </script>
 <script>
@@ -1307,6 +1317,26 @@ document.querySelector(".nav-links");
 
 menuBtn.addEventListener("click", function(){
   navLinks.classList.toggle("active");
+});
+</script>
+<script>
+document.getElementById(
+  "downloadQR"
+).addEventListener("click", function(){
+
+  const img =
+    document.querySelector(
+      "#qrContainer img"
+    );
+
+  if(!img) return;
+
+  const a =
+    document.createElement("a");
+
+  a.href = img.src;
+  a.download = "vidtoolkit-qr.png";
+  a.click();
 });
 </script>
 </body>
