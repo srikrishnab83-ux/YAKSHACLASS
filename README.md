@@ -1322,19 +1322,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-const shortBtn =
-document.getElementById("shortBtn");
+document.addEventListener("DOMContentLoaded", function () {
 
-if(shortBtn){
+  const shortBtn =
+    document.getElementById("shortBtn");
 
-  shortBtn.addEventListener("click", function(){
+  if (!shortBtn) return;
+
+  shortBtn.addEventListener("click", function () {
 
     const url =
       document.getElementById("longLink")
       .value
       .trim();
 
-    if(url === ""){
+    if (url === "") {
       alert("Please enter a URL.");
       return;
     }
@@ -1344,38 +1346,46 @@ if(shortBtn){
       "/?url=" +
       btoa(url);
 
-    document.getElementById("shortResult").innerHTML = `
-<p><strong>Short Link:</strong></p>
+    document.getElementById("shortResult")
+      .innerHTML = `
+        <p><strong>Short Link:</strong></p>
 
-<input
-  id="generatedLink"
-  value="${shortLink}"
-  style="
-    width:100%;
-    padding:15px;
-    margin-top:15px;
-    border-radius:12px;
-  "
-  readonly>
+        <input
+          id="generatedLink"
+          value="${shortLink}"
+          style="
+            width:100%;
+            padding:15px;
+            margin-top:15px;
+            border-radius:12px;
+          "
+          readonly>
 
-<br><br>
+        <br><br>
 
-<button class="btn" id="copyLinkBtn">
-  Copy Link
-</button>
-`;
+        <button
+          class="btn"
+          id="copyLinkBtn">
+          Copy Link
+        </button>
+      `;
 
-// Add listener AFTER creating the button
-document.getElementById("copyLinkBtn")
-.addEventListener("click", function () {
+    const copyBtn =
+      document.getElementById("copyLinkBtn");
 
-  const link =
-    document.getElementById("generatedLink");
+    copyBtn.addEventListener("click", function () {
 
-  navigator.clipboard.writeText(link.value);
+      const link =
+        document.getElementById("generatedLink");
 
-  alert("Link copied!");
-});
+      navigator.clipboard.writeText(
+        link.value
+      );
+
+      alert("Link copied!");
+    });
+
+  });
 
 });
 </script>
