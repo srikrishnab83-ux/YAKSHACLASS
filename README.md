@@ -1506,7 +1506,6 @@ document.getElementById("shortBtn")
     showToast("❌ Unable to shorten link.");
   }
 });
-});
 </script>
 <script>
 const menuBtn = document.getElementById("menuBtn");
