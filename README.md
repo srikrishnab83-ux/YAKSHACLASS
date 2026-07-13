@@ -21,6 +21,10 @@ gtag("js", new Date());
 
 gtag("config", "G-XXXXXXXXXX");
 </script>
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+crossorigin="anonymous">
+</script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
