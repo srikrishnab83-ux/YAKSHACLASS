@@ -356,11 +356,11 @@
       </div>
 
       <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Tools</a>
-        <a href="#blogSection">Blog</a>
-        <a href="#">Contact</a>
-      </div>
+  <a href="#home">Home</a>
+  <a href="#tools">Tools</a>
+  <a href="#blogSection">Blog</a>
+  <a href="#contactSection">Contact</a>
+</div>
 <button class="menu-btn" id="menuBtn">
   <i class="fas fa-bars"></i>
 </button>
