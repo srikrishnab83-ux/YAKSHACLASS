@@ -1205,6 +1205,9 @@ else if (url.includes("/shorts/")) {
 else if (url.includes("/live/")) {
   id = url.split("/live/")[1].split("?")[0];
 }
+  else if (url.includes("/shorts/")) {
+  id = url.split("/shorts/")[1].split("?")[0];
+}
 else {
   showToast("❌ Invalid YouTube URL");
   return;
@@ -1647,25 +1650,18 @@ allowfullscreen>
 });
 </script>
 
-  const toast =
-    document.getElementById("toast");
+ <div id="toast">Message</div>
+
+<script>
+function showToast(message) {
+  const toast = document.getElementById("toast");
 
   toast.innerText = message;
   toast.classList.add("show");
 
-  setTimeout(function(){
+  setTimeout(function () {
     toast.classList.remove("show");
   }, 2000);
-
-}
-</script>
-<div id="toast">
-  Message
-</div>
-
-<script>
-function showToast(message){
-  ...
 }
 </script>
 </body>
