@@ -8,7 +8,11 @@
   <meta name="keywords" content="creator tools, youtube tools, instagram tools, social media tools">
   <meta name="author" content="VidToolkit Pro">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-
+ <!-- Open Graph SEO -->
+  <meta property="og:title" content="VidToolkit Pro">
+  <meta property="og:description" content="All-in-One Creator Tools Platform">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
 <script>
 window.dataLayer =
 window.dataLayer || [];
