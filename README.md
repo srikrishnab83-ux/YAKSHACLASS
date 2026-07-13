@@ -504,11 +504,11 @@
   <p>Create shorter links for easy sharing.</p>
 </div>
 
-      <div class="card">
-        <i class="fas fa-code"></i>
-        <h3>Embed Generator</h3>
-        <p>Generate embed codes for websites and blogs.</p>
-      </div>
+      <div class="card" id="embedCard">
+  <i class="fas fa-code"></i>
+  <h3>Embed Generator</h3>
+  <p>Generate embed codes for websites and blogs.</p>
+</div>
 
     </div>
 
@@ -965,6 +965,40 @@ topBtn.onclick = function(){
 
       <div
         id="shortResult"
+        style="margin-top:40px;">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Embed Generator -->
+<section class="platforms" id="embedSection">
+  <div class="container">
+
+    <h2 class="section-title">
+      YouTube Embed Generator
+    </h2>
+
+    <div class="card">
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="embedLink"
+          placeholder="Paste YouTube URL">
+
+        <button
+          class="btn"
+          id="embedBtn">
+          Generate Embed
+        </button>
+
+      </div>
+
+      <div
+        id="embedResult"
         style="margin-top:40px;">
       </div>
 
@@ -1454,6 +1488,9 @@ window.addEventListener("load", function () {
     else if (url.includes("youtu.be/")) {
       id = url.split("youtu.be/")[1].split("?")[0];
     }
+      else if (url.includes("/live/")) {
+  id = url.split("/live/")[1].split("?")[0];
+}
     else {
       alert("Invalid YouTube URL");
       return;
@@ -1480,6 +1517,111 @@ window.addEventListener("load", function () {
           ">
       </div>
     `;
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const embedCard =
+    document.getElementById("embedCard");
+
+  const embedSection =
+    document.getElementById("embedSection");
+
+  if (embedCard && embedSection) {
+
+    embedCard.style.cursor = "pointer";
+
+    embedCard.addEventListener("click", function () {
+      embedSection.scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+  }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const embedBtn =
+    document.getElementById("embedBtn");
+
+  if (!embedBtn) return;
+
+  embedBtn.addEventListener("click", function () {
+
+    const url =
+      document.getElementById("embedLink")
+      .value
+      .trim();
+
+    if (url === "") {
+      alert("Please paste a YouTube URL.");
+      return;
+    }
+
+    let id = "";
+
+    if (url.includes("watch?v=")) {
+      id = url.split("watch?v=")[1].split("&")[0];
+    }
+    else if (url.includes("youtu.be/")) {
+      id = url.split("youtu.be/")[1].split("?")[0];
+    }
+    else if (url.includes("/shorts/")) {
+      id = url.split("/shorts/")[1].split("?")[0];
+    }
+    else {
+      alert("Invalid YouTube URL");
+      return;
+    }
+
+    const code =
+`<iframe width="560" height="315"
+src="https://www.youtube.com/embed/${id}"
+frameborder="0"
+allowfullscreen>
+</iframe>`;
+
+    document.getElementById("embedResult")
+      .innerHTML = `
+        <textarea
+          id="embedCode"
+          style="
+            width:100%;
+            height:150px;
+            padding:15px;
+            border-radius:15px;
+            margin-top:20px;
+          "
+          readonly>${code}</textarea>
+
+        <br><br>
+
+        <button
+          class="btn"
+          id="copyEmbedBtn">
+          Copy Embed Code
+        </button>
+      `;
+
+    document.getElementById("copyEmbedBtn")
+      .addEventListener("click", function () {
+
+        const codeBox =
+          document.getElementById("embedCode");
+
+        navigator.clipboard.writeText(
+          codeBox.value
+        );
+
+        alert("Embed code copied!");
+      });
+
   });
 
 });
