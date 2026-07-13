@@ -300,6 +300,26 @@
       }
 
     }
+    #toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#1e293b;
+  color:white;
+  padding:15px 25px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  opacity:0;
+  pointer-events:none;
+  transition:all 0.4s ease;
+  z-index:9999;
+}
+
+#toast.show{
+  opacity:1;
+  bottom:50px;
+}
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
@@ -1240,7 +1260,7 @@ window.addEventListener("load", function () {
     .trim();
 
     if (text === "") {
-      alert("Please enter a URL.");
+      alertshowToast("⚠️ Please enter a URL.");
       return;
     }
 
@@ -1416,7 +1436,7 @@ document.addEventListener("DOMContentLoaded", function () {
         link.value
       );
 
-      alert("Link copied!");
+      alert("LinshowToast("✅ Link copied!");k copied!");
     });
 
   });
@@ -1619,12 +1639,30 @@ allowfullscreen>
           codeBox.value
         );
 
-        alert("Embed code copied!");
+    showToast("✅ Embed code copied!");
       });
 
   });
 
 });
+</script>
+<div id="toast">
+  Message
+</div>
+<script>
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.innerText = message;
+  toast.classList.add("show");
+
+  setTimeout(function(){
+    toast.classList.remove("show");
+  }, 2000);
+
+}
 </script>
 </body>
 </html>
