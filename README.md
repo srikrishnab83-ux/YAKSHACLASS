@@ -7,7 +7,20 @@
   <meta name="description" content="VidToolkit Pro is an all-in-one creator tools platform for YouTube, Instagram, Facebook, and TikTok users.">
   <meta name="keywords" content="creator tools, youtube tools, instagram tools, social media tools">
   <meta name="author" content="VidToolkit Pro">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 
+<script>
+window.dataLayer =
+window.dataLayer || [];
+
+function gtag(){
+  dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+
+gtag("config", "G-XXXXXXXXXX");
+</script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,6 +335,7 @@
 }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
 </head>
 
 <body>
