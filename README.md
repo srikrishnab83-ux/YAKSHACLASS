@@ -358,7 +358,7 @@
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Tools</a>
-        <a href="#blogSection">Blog</a> href="#">Blog</a>
+        <a href="#blogSection">Blog</a>
         <a href="#">Contact</a>
       </div>
 <button class="menu-btn" id="menuBtn">
