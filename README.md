@@ -1511,15 +1511,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-const menuBtn =
-document.getElementById("menuBtn");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.querySelector(".nav-links");
 
-const navLinks =
-document.querySelector(".nav-links");
-
-menuBtn.addEventListener("click", function(){
-  navLinks.classList.toggle("active");
-});
+if (menuBtn && navLinks) {
+  menuBtn.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+  });
+}
 </script>
 <script>
 document.getElementById("downloadQR")
