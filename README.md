@@ -372,7 +372,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="container">
 
     <h1 id="typing-title">
@@ -435,7 +435,7 @@
 
   </div>
 </section>
-<section class="platforms">
+<section class="platforms" id="blogSection">
   <div class="container">
 
     <h2 class="section-title">
@@ -719,7 +719,7 @@
   </div>
 </section>
 <!-- Contact -->
-<section style="padding:80px 0;">
+<section style="padding:80px 0;" id="contactSection">
   <div class="container">
 
     <h2 class="section-title">
