@@ -1443,71 +1443,69 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.getElementById("shortBtn")
+.addEventListener("click", async function () {
 
-  const shortBtn =
-    document.getElementById("shortBtn");
+  const url =
+    document.getElementById("longLink")
+    .value.trim();
 
-  if (!shortBtn) return;
+  if (!url) {
+    showToast("⚠️ Please enter a URL.");
+    return;
+  }
 
-  shortBtn.addEventListener("click", function () {
+  try {
 
-    const url =
-      document.getElementById("longLink")
-      .value
-      .trim();
-
-    if (url === "") {
-      alert("Please enter a URL.");
-      return;
-    }
+    const response =
+      await fetch(
+        "https://tinyurl.com/api-create.php?url=" +
+        encodeURIComponent(url)
+      );
 
     const shortLink =
-      location.origin +
-      "/?url=" +
-      btoa(url);
+      await response.text();
 
-    document.getElementById("shortResult")
-      .innerHTML = `
-        <p><strong>Short Link:</strong></p>
+    document.getElementById(
+      "shortResult"
+    ).innerHTML = `
+      <p><strong>Short Link:</strong></p>
 
-        <input
-          id="generatedLink"
-          value="${shortLink}"
-          style="
-            width:100%;
-            padding:15px;
-            margin-top:15px;
-            border-radius:12px;
-          "
-          readonly>
+      <input
+        id="generatedLink"
+        value="${shortLink}"
+        style="
+          width:100%;
+          padding:15px;
+          margin-top:15px;
+          border-radius:12px;
+        "
+        readonly>
 
-        <br><br>
+      <br><br>
 
-        <button
-          class="btn"
-          id="copyLinkBtn">
-          Copy Link
-        </button>
-      `;
+      <button
+        class="btn"
+        id="copyLinkBtn">
+        Copy Link
+      </button>
+    `;
 
-    const copyBtn =
-      document.getElementById("copyLinkBtn");
-
-    copyBtn.addEventListener("click", function () {
-
-      const link =
-        document.getElementById("generatedLink");
+    document.getElementById(
+      "copyLinkBtn"
+    ).onclick = function () {
 
       navigator.clipboard.writeText(
-        link.value
+        shortLink
       );
 
       showToast("✅ Link copied!");
-    });
+    };
 
-  });
-
+  } catch (e) {
+    showToast("❌ Unable to shorten link.");
+  }
+});
 });
 </script>
 <script>
