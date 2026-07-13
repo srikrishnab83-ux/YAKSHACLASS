@@ -1206,7 +1206,7 @@ else if (url.includes("/live/")) {
   id = url.split("/live/")[1].split("?")[0];
 }
 else {
-  alert("Invalid YouTube URL");
+  showToast("❌ Invalid YouTube URL");
   return;
 }
 
@@ -1260,7 +1260,7 @@ window.addEventListener("load", function () {
     .trim();
 
     if (text === "") {
-      alertshowToast("⚠️ Please enter a URL.");
+      showToast("⚠️ Please enter a URL.");
       return;
     }
 
@@ -1354,7 +1354,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .toLowerCase();
 
     if (keyword === "") {
-      alert("Please enter a keyword.");
+      showToast("⚠️ Please enter a keyword.");
       return;
     }
 
@@ -1436,7 +1436,7 @@ document.addEventListener("DOMContentLoaded", function () {
         link.value
       );
 
-      alert("LinshowToast("✅ Link copied!");k copied!");
+      showToast("✅ Link copied!");
     });
 
   });
@@ -1462,7 +1462,7 @@ document.getElementById("downloadQR")
     document.querySelector("#qrContainer canvas");
 
   if (!canvas) {
-    alert("Please generate a QR code first.");
+    showToast("⚠️ Please generate a QR code first.");
     return;
   }
 
@@ -1496,7 +1496,7 @@ window.addEventListener("load", function () {
       .value.trim();
 
     if (url === "") {
-      alert("Please paste a YouTube URL.");
+      showToast("⚠️ Please paste a YouTube URL.");
       return;
     }
 
@@ -1512,7 +1512,7 @@ window.addEventListener("load", function () {
   id = url.split("/live/")[1].split("?")[0];
 }
     else {
-      alert("Invalid YouTube URL");
+      showToast("❌ Invalid YouTube URL");
       return;
     }
 
@@ -1596,7 +1596,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id = url.split("/shorts/")[1].split("?")[0];
     }
     else {
-      alert("Invalid YouTube URL");
+      showToast("❌ Invalid YouTube URL");
       return;
     }
 
@@ -1646,11 +1646,6 @@ allowfullscreen>
 
 });
 </script>
-<div id="toast">
-  Message
-</div>
-<script>
-function showToast(message){
 
   const toast =
     document.getElementById("toast");
@@ -1662,6 +1657,15 @@ function showToast(message){
     toast.classList.remove("show");
   }, 2000);
 
+}
+</script>
+<div id="toast">
+  Message
+</div>
+
+<script>
+function showToast(message){
+  ...
 }
 </script>
 </body>
