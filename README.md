@@ -358,7 +358,7 @@
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Tools</a>
-        <a href="#">Blog</a>
+        <a<a href="#blogSection">Blog</a> href="#">Blog</a>
         <a href="#">Contact</a>
       </div>
 <button class="menu-btn" id="menuBtn">
@@ -653,7 +653,71 @@
 
   </div>
 </section>
+<section class="platforms" id="blogSection">
+  <div class="container">
 
+    <h2 class="section-title">
+      Creator Blog
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>
+          Best Free YouTube Tools for Creators
+        </h3>
+
+        <p>
+          Discover useful creator tools like
+          thumbnail downloaders, QR generators,
+          metadata viewers and embed generators.
+        </p>
+
+        <button
+          class="btn"
+          onclick="openBlog(1)">
+          Read More
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>
+          How to Download YouTube Thumbnails
+        </h3>
+
+        <p>
+          Learn how to find and download
+          high-quality YouTube thumbnails easily.
+        </p>
+
+        <button
+          class="btn"
+          onclick="openBlog(2)">
+          Read More
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>
+          Instagram Growth Tips
+        </h3>
+
+        <p>
+          Practical tips to grow your
+          Instagram account and increase reach.
+        </p>
+
+        <button
+          class="btn"
+          onclick="openBlog(3)">
+          Read More
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- Contact -->
 <section style="padding:80px 0;">
   <div class="container">
@@ -1663,6 +1727,125 @@ function showToast(message) {
     toast.classList.remove("show");
   }, 2000);
 }
+</script>
+<div
+id="blogPopup"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+z-index:9999;
+overflow:auto;
+">
+
+<div
+style="
+background:#1e293b;
+max-width:800px;
+margin:50px auto;
+padding:30px;
+border-radius:20px;
+color:white;
+">
+
+<h2 id="blogTitle"></h2>
+
+<p
+id="blogContent"
+style="margin-top:20px;">
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="closeBlog()">
+Close
+</button>
+</div>
+</div>
+<script>
+
+function openBlog(id){
+
+  const title =
+  document.getElementById("blogTitle");
+
+  const content =
+  document.getElementById("blogContent");
+
+  if(id === 1){
+
+    title.innerText =
+    "Best Free YouTube Tools for Creators";
+
+    content.innerHTML =
+    `
+    Thumbnail Downloader helps creators
+    download public thumbnails.
+
+    Metadata Viewer allows checking
+    public video information.
+
+    QR Generator creates QR codes
+    for channels and websites.
+
+    Embed Generator creates
+    iframe code for blogs and websites.
+    `;
+  }
+
+  if(id === 2){
+
+    title.innerText =
+    "How to Download YouTube Thumbnails";
+
+    content.innerHTML =
+    `
+    Step 1: Copy a YouTube link.<br><br>
+
+    Step 2: Paste it into Thumbnail Downloader.<br><br>
+
+    Step 3: Click Preview Thumbnail.<br><br>
+
+    Step 4: Open or download the image.
+    `;
+  }
+
+  if(id === 3){
+
+    title.innerText =
+    "Instagram Growth Tips";
+
+    content.innerHTML =
+    `
+    Post consistently.<br><br>
+
+    Use relevant hashtags.<br><br>
+
+    Create engaging reels.<br><br>
+
+    Reply to comments and messages.
+    `;
+  }
+
+  document.getElementById(
+    "blogPopup"
+  ).style.display =
+  "block";
+}
+
+function closeBlog(){
+  document.getElementById(
+    "blogPopup"
+  ).style.display =
+  "none";
+}
+
 </script>
 </body>
 </html>
