@@ -26,7 +26,7 @@ gtag("js", new Date());
 gtag("config", "G-4FSDQHFR8N");
 </script>
 <script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3669501893002041"
 crossorigin="anonymous">
 </script>
   <!-- Google Font -->
