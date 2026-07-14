@@ -16,7 +16,9 @@
 
 <meta name="theme-color" content="#0f172a">
 
-<link rel="canonical" href="https://yourdomain.com/">
+<link rel="canonical" href="https://<link rel="canonical" href="https://srikrishnab83-ux.github.io/YAKSHACLASS/">
+
+<meta property="og:url" content="https://srikrishnab83-ux.github.io/YAKSHACLASS/">
 
 <link rel="icon" href="favicon.png" type="image/png">
 
@@ -24,7 +26,7 @@
 <meta property="og:description" content="All-in-One Creator Tools Platform">
 <meta property="og:image" content="logo.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com">
+<meta property="og:url" content="https://srikrishnab83-ux.github.io/YAKSHACLASS/">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FSDQHFR8N"></script>
 
