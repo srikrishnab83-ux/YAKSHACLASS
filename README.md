@@ -388,10 +388,10 @@ crossorigin="anonymous"></script>
       </div>
 
       <div class="nav-links">
-  <a href="#home">Home</a>
+  <a href="index.html">Home</a>
   <a href="#tools">Tools</a>
   <a href="#blogSection">Blog</a>
-  <a href="#contactSection">Contact</a>
+  <a href="contact.html">Contact</a>
 </div>
 <button class="menu-btn" id="menuBtn">
   <i class="fas fa-bars"></i>
@@ -1139,6 +1139,13 @@ topBtn.onclick = function(){
     </p>
 
   </div>
+  <div class="footer-links">
+  <a href="about.html">About</a> |
+  <a href="contact.html">Contact</a> |
+  <a href="privacy.html">Privacy Policy</a> |
+  <a href="terms.html">Terms & Conditions</a> |
+  <a href="disclaimer.html">Disclaimer</a>
+</div>
 </footer>
 
 <script>
