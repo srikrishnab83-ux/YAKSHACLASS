@@ -7,7 +7,7 @@
   <meta name="description" content="VidToolkit Pro is an all-in-one creator tools platform for YouTube, Instagram, Facebook, and TikTok users.">
   <meta name="keywords" content="creator tools, youtube tools, instagram tools, social media tools">
   <meta name="author" content="VidToolkit Pro">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4FSDQHFR8N"></script>
  <!-- Open Graph SEO -->
   <meta property="og:title" content="VidToolkit Pro">
   <meta property="og:description" content="All-in-One Creator Tools Platform">
@@ -23,7 +23,7 @@ function gtag(){
 
 gtag("js", new Date());
 
-gtag("config", "G-XXXXXXXXXX");
+gtag("config", "G-4FSDQHFR8N");
 </script>
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
