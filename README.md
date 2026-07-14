@@ -2,36 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VidToolkit Pro - All-in-One Creator Tools</title>
-  <meta name="description" content="VidToolkit Pro is an all-in-one creator tools platform for YouTube, Instagram, Facebook, and TikTok users.">
-  <meta name="keywords" content="creator tools, youtube tools, instagram tools, social media tools">
-  <meta name="author" content="VidToolkit Pro">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4FSDQHFR8N"></script>
- <!-- Open Graph SEO -->
-  <meta property="og:title" content="VidToolkit Pro">
-<meta property="og:description" content="Free YouTube, Instagram, Facebook & TikTok Creator Tools">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VidToolkit Pro - All-in-One Creator Tools</title>
+
+<meta name="description" content="VidToolkit Pro is an all-in-one creator tools platform for YouTube, Instagram, Facebook, and TikTok users.">
+
+<meta name="keywords" content="creator tools, youtube tools, instagram tools, social media tools">
+
+<meta name="author" content="VidToolkit Pro">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#0f172a">
+
+<link rel="canonical" href="https://yourdomain.com/">
+
+<link rel="icon" href="favicon.png" type="image/png">
+
+<meta property="og:title" content="VidToolkit Pro">
+<meta property="og:description" content="All-in-One Creator Tools Platform">
 <meta property="og:image" content="logo.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://srikrishnab83-ux.github.io/VidToolkit-Pro/">
+<meta property="og:url" content="https://yourdomain.com">
 
-<link rel="canonical" href="https://srikrishnab83-ux.github.io/VidToolkit-Pro/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4FSDQHFR8N"></script>
+
 <script>
-window.dataLayer =
-window.dataLayer || [];
-
-function gtag(){
-  dataLayer.push(arguments);
-}
-
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
-
 gtag("config", "G-4FSDQHFR8N");
 </script>
+
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3669501893002041"
-crossorigin="anonymous">
-</script>
+crossorigin="anonymous"></script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
