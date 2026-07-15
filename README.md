@@ -566,6 +566,55 @@ crossorigin="anonymous"></script>
 
   </div>
 </section>
+<!-- All Tools -->
+<section class="platforms">
+  <div class="container">
+
+    <h2 class="section-title">
+      All Tools
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fab fa-facebook"></i>
+        <h3>Facebook Video Downloader</h3>
+        <p>Download Facebook videos easily.</p>
+        <a href="fbdownloader.html" class="btn">Open Tool</a>
+      </div>
+
+      <div class="card">
+        <i class="fab fa-instagram"></i>
+        <h3>Instagram Downloader</h3>
+        <p>Download Instagram reels and videos.</p>
+        <a href="instagram-downloader.html" class="btn">Open Tool</a>
+      </div>
+
+      <div class="card">
+        <i class="fab fa-youtube"></i>
+        <h3>YouTube Tags Extractor</h3>
+        <p>Extract YouTube tags and Video ID.</p>
+        <a href="youtube-tag-extractor.html" class="btn">Open Tool</a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-heading"></i>
+        <h3>YouTube Title Generator</h3>
+        <p>Generate SEO-friendly YouTube titles.</p>
+        <a href="youtubetitlegenerator.html" class="btn">Open Tool</a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-file-alt"></i>
+        <h3>YouTube Description Generator</h3>
+        <p>Create professional YouTube descriptions.</p>
+        <a href="youviddiscgener.html" class="btn">Open Tool</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 <!-- AdSense Placeholder -->
 <section style="padding:60px 0;">
