@@ -35,6 +35,15 @@ function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
 gtag("config", "G-4FSDQHFR8N");
 </script>
+fetch("https://vidtoolkit-api.srikrishnab83.workers.dev")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    alert(data.message);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3669501893002041"
@@ -43,7 +52,7 @@ crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+}
   <!-- Font Awesome -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
