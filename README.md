@@ -400,8 +400,9 @@ crossorigin="anonymous"></script>
 
       <div class="nav-links">
   <a href="index.html">Home</a>
-  <a href="#tools">Tools</a>
-  <a href="#blogSection">Blog</a>
+  <a href="#blogSection">Tools</a>
+  <a href="recommended-tools.html">Recommended Tools</a>
+  <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </div>
 <button class="menu-btn" id="menuBtn">
