@@ -35,6 +35,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
 gtag("config", "G-4FSDQHFR8N");
 </script>
+<script>
 fetch("https://vidtoolkit-api.srikrishnab83.workers.dev")
   .then(response => response.json())
   .then(data => {
@@ -44,6 +45,7 @@ fetch("https://vidtoolkit-api.srikrishnab83.workers.dev")
   .catch(error => {
     console.error(error);
   });
+</script>
 
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3669501893002041"
