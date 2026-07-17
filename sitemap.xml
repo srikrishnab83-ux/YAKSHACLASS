@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
@@ -23,15 +24,19 @@
   </url>
 
   <url>
-    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/disclaimer.html</loc>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/creator-store.html</loc>
   </url>
 
   <url>
-    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/fbdownloader.html</loc>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/youtube-downloader.html</loc>
   </url>
 
   <url>
     <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/instagram-downloader.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/fbdownloader.html</loc>
   </url>
 
   <url>
@@ -44,6 +49,37 @@
 
   <url>
     <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/youviddiscgener.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/webcams.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/microphones.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/ring-lights.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/laptops.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/ssd-storage.html</loc>
+  </url>
+
+  <url>
+    <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/headphones.html</loc>
+  </url>
+ <url>
+  <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/tools/qr-generator.html</loc>
+  </url>
+
+ <url>
+  <loc>https://srikrishnab83-ux.github.io/VidToolkit-Pro/tools/hashtag-generator.html</loc>
   </url>
 
 </urlset>
