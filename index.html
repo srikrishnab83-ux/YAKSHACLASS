@@ -1426,10 +1426,37 @@ observer.observe(sec);
 
 /* Tool Search */
 
+const searchInput = document.querySelector(".searchBox input");
 const searchBtn = document.querySelector(".searchBox button");
 
-searchBtn.addEventListener("click", function () {
-    alert("Search button is working!");
+function searchTools() {
+    const value = searchInput.value.trim().toLowerCase();
+
+    const cards = document.querySelectorAll(".toolCard");
+
+    cards.forEach(function(card) {
+        const text = card.textContent.toLowerCase();
+
+        if (text.includes(value) || value === "") {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (value !== "") {
+        document.getElementById("tools").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+searchBtn.addEventListener("click", searchTools);
+
+searchInput.addEventListener("keyup", function(e) {
+    if (e.key === "Enter") {
+        searchTools();
+    }
 });
 </script>
 
