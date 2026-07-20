@@ -1428,32 +1428,41 @@ observer.observe(sec);
 
 const searchInput = document.querySelector(".searchBox input");
 const searchBtn = document.querySelector(".searchBox button");
+const toolCards = document.querySelectorAll(".toolCard");
 
 function searchTools() {
-    const value = searchInput.value.trim().toLowerCase();
 
-    document.querySelectorAll(".toolCard").forEach(card => {
-        const text = card.textContent.toLowerCase();
+    const keyword = searchInput.value.trim().toLowerCase();
 
-        if (text.includes(value) || value === "") {
+    toolCards.forEach(card => {
+
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const desc = card.querySelector("p").textContent.toLowerCase();
+
+        if (
+            title.includes(keyword) ||
+            desc.includes(keyword) ||
+            keyword === ""
+        ) {
             card.style.display = "";
         } else {
             card.style.display = "none";
         }
+
     });
 
-    // Scroll to tools section
     document.getElementById("tools").scrollIntoView({
         behavior: "smooth"
     });
+
 }
 
-// Search when button is clicked
 searchBtn.addEventListener("click", searchTools);
 
-// Search when Enter is pressed
-searchInput.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
+searchInput.addEventListener("input", searchTools);
+
+searchInput.addEventListener("keydown", function(e){
+    if(e.key==="Enter"){
         searchTools();
     }
 });
