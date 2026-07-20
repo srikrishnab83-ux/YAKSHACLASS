@@ -1,9 +1,17 @@
-const searchBox =
-    document.querySelector(".search-box") ||
-    document.querySelector(".searchBox");
+document.addEventListener("DOMContentLoaded", function () {
 
-const cards =
-    document.querySelectorAll(".product-card, .productCard, .storeCard");
+    const searchBox =
+        document.querySelector(".search-box") ||
+        document.querySelector(".searchBox");
+
+    if (!searchBox) return;
+
+    const searchInput = searchBox.querySelector("input");
+    const searchBtn = searchBox.querySelector("button");
+
+    const cards = document.querySelectorAll(
+        ".product-card, .productCard, .storeCard"
+    );
 
     function searchProducts() {
 
@@ -15,19 +23,14 @@ const cards =
             const text = card.textContent.toLowerCase();
 
             if (text.includes(keyword) || keyword === "") {
-
                 card.style.display = "";
                 found = true;
-
             } else {
-
                 card.style.display = "none";
-
             }
 
         });
 
-        // Show / Hide "No Products Found"
         let noResult = document.getElementById("noResults");
 
         if (!found && keyword !== "") {
@@ -39,7 +42,7 @@ const cards =
                 noResult.style.textAlign = "center";
                 noResult.style.margin = "40px 0";
                 noResult.style.color = "#666";
-                noResult.innerHTML = "No matching products found.";
+                noResult.textContent = "No matching products found.";
 
                 const grid = cards[0]?.parentElement;
                 if (grid) {
@@ -50,22 +53,20 @@ const cards =
 
         } else {
 
-            if (noResult) noResult.remove();
+            if (noResult) {
+                noResult.remove();
+            }
 
         }
 
     }
 
-    if (searchBtn) {
-        searchBtn.addEventListener("click", searchProducts);
-    }
+    searchBtn.addEventListener("click", searchProducts);
 
-    searchInput.addEventListener("keyup", function (e) {
-
+    searchInput.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             searchProducts();
         }
-
     });
 
 });
