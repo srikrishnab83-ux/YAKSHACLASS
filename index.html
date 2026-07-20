@@ -1366,86 +1366,70 @@ transform:translateY(0);
 
 <script>
 
+<script>
+
 /* Back to top */
-
 const btn=document.getElementById("backTop");
-
 window.addEventListener("scroll",()=>{
-
 if(window.scrollY>500){
-
 btn.style.display="block";
-
 }else{
-
 btn.style.display="none";
-
 }
-
 });
-
 btn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
+window.scrollTo({top:0,behavior:"smooth"});
 };
 
 /* Scroll Animation */
-
 const observer=new IntersectionObserver(entries=>{
-
 entries.forEach(entry=>{
-
 if(entry.isIntersecting){
-
 entry.target.classList.add("show");
-
 }
-
 });
-
-});
-
 document.querySelectorAll("section").forEach(sec=>{
-
 sec.classList.add("fade");
-
 observer.observe(sec);
-
 });
 
-<script>
-/* ===========================
-Live Product Search - Works on Button + Enter
-=========================== */
-
+/* Tool Search - FIXED FOR YOUR SITE */
 const searchInput = document.getElementById("searchInput");
-const searchBtn = document.querySelector(".search-box button"); // targets your magnifying glass button
+const searchBtn = document.getElementById("searchBtn");
+const toolGrid = document.querySelector(".toolGrid");
+
+// Create "no results" message
+const noResultMsg = document.createElement("p");
+noResultMsg.style.cssText = "text-align:center;grid-column:1/-1;font-size:18px;color:#666;padding:40px 0;display:none;";
+noResultMsg.innerText = "No tools found";
+if(toolGrid) toolGrid.appendChild(noResultMsg);
 
 function doSearch() {
-  const value = searchInput.value.toLowerCase();
+  const value = searchInput.value.toLowerCase().trim();
+  let foundCount = 0;
   
-  document.querySelectorAll(".product-card")
+  document.querySelectorAll(".toolCard")  // <-- IMPORTANT: .toolCard not .product-card
   .forEach(card => {
-    if(card.innerText.toLowerCase().includes(value)) {
+    const text = card.innerText.toLowerCase();
+    if(text.includes(value) || value === "") {
       card.style.display = "block";
+      foundCount++;
     } else {
       card.style.display = "none";
     }
   });
+  
+  if(foundCount === 0 && value !== "") {
+    noResultMsg.style.display = "block";
+  } else {
+    noResultMsg.style.display = "none";
+  }
 }
 
 // 1. Search on typing
 if(searchInput){
   searchInput.addEventListener("keyup", function(e){
     doSearch();
-    // Also search when user presses Enter
     if(e.key === "Enter"){
       doSearch();
     }
