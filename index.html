@@ -1428,41 +1428,32 @@ observer.observe(sec);
 
 const searchInput = document.querySelector(".searchBox input");
 const searchBtn = document.querySelector(".searchBox button");
-const toolCards = document.querySelectorAll(".toolCard");
 
 function searchTools() {
+    const value = searchInput.value.trim().toLowerCase();
+    const cards = document.querySelectorAll(".toolCard");
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
 
-    toolCards.forEach(card => {
-
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        const desc = card.querySelector("p").textContent.toLowerCase();
-
-        if (
-            title.includes(keyword) ||
-            desc.includes(keyword) ||
-            keyword === ""
-        ) {
+        if (text.indexOf(value) > -1 || value === "") {
             card.style.display = "";
         } else {
             card.style.display = "none";
         }
-
     });
 
-    document.getElementById("tools").scrollIntoView({
-        behavior: "smooth"
-    });
-
+    if (value !== "") {
+        document.getElementById("tools").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
 
 searchBtn.addEventListener("click", searchTools);
 
-searchInput.addEventListener("input", searchTools);
-
-searchInput.addEventListener("keydown", function(e){
-    if(e.key==="Enter"){
+searchInput.addEventListener("keyup", function(e) {
+    if (e.key === "Enter") {
         searchTools();
     }
 });
