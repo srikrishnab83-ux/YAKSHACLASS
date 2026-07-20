@@ -1,14 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+const searchBox =
+    document.querySelector(".search-box") ||
+    document.querySelector(".searchBox");
 
-    const searchBox = document.querySelector(".searchBox");
-
-    if (!searchBox) return;
-
-    const searchInput = searchBox.querySelector("input");
-    const searchBtn = searchBox.querySelector("button");
-
-    // Supports both productCard and storeCard
-    const cards = document.querySelectorAll(".productCard, .storeCard");
+const cards =
+    document.querySelectorAll(".product-card, .productCard, .storeCard");
 
     function searchProducts() {
 
