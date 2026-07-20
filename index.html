@@ -388,13 +388,17 @@ Explore Creator Store
 </div>
 
 <div class="searchBox">
+
 <input
 type="text"
-id="searchInput"
 placeholder="Search tools...">
-<button id="searchBtn">
+
+<button>
+
 <i class="fa-solid fa-magnifying-glass"></i>
+
 </button>
+
 </div>
 
 </div>
@@ -1364,107 +1368,86 @@ transform:translateY(0);
 
 </button>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-... everything above stays same until </footer> ...
-</footer>
-
-<style>
-.footerGrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px; }
-.footerGrid a{ color:#cccccc; text-decoration:none; }
-.footerGrid a:hover{ color:white; }
-#backTop{ position:fixed; bottom:25px; right:25px; width:55px; height:55px; background:#2563eb; color:white; border:none; border-radius:50%; font-size:22px; cursor:pointer; display:none; box-shadow:0 10px 30px rgba(0,0,0,.25); }
-.fade{ opacity:0; transform:translateY(40px); transition:.8s; }
-.fade.show{ opacity:1; transform:translateY(0); }
-</style>
-
-<button id="backTop">
-<i class="fa-solid fa-arrow-up"></i>
-</button>
-
 <script>
-document.addEventListener("DOMContentLoaded", function() {
 
 /* Back to top */
+
 const btn=document.getElementById("backTop");
-if(btn){
-  window.addEventListener("scroll",()=>{
-  if(window.scrollY>500){
-  btn.style.display="block";
-  }else{
-  btn.style.display="none";
-  }
-  });
-  btn.onclick=()=>{
-  window.scrollTo({top:0,behavior:"smooth"});
-  };
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+btn.style.display="block";
+
+}else{
+
+btn.style.display="none";
+
 }
+
+});
+
+btn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
 
 /* Scroll Animation */
+
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-  if(entry.isIntersecting){
-  entry.target.classList.add("show");
-  }
-  });
-}); 
-document.querySelectorAll("section").forEach(sec=>{
-  sec.classList.add("fade");
-  observer.observe(sec);
-});
 
-/* Tool Search - FINAL WORKING VERSION */
-const searchInput = document.getElementById("searchInput");
-const searchBtn = document.getElementById("searchBtn");
-const toolGrid = document.querySelector(".toolGrid");
+entries.forEach(entry=>{
 
-if(searchInput && searchBtn && toolGrid){
+if(entry.isIntersecting){
 
-  // Create "no results" message
-  const noResultMsg = document.createElement("p");
-  noResultMsg.style.cssText = "text-align:center;grid-column:1/-1;font-size:18px;color:#666;padding:40px 0;display:none;";
-  noResultMsg.innerText = "No tools found for your search";
-  toolGrid.appendChild(noResultMsg);
+entry.target.classList.add("show");
 
-  function doSearch() {
-    const value = searchInput.value.toLowerCase().trim();
-    let foundCount = 0;
-    
-    document.querySelectorAll(".toolCard").forEach(card => {
-      const text = card.innerText.toLowerCase();
-      if(text.includes(value) || value === "") {
-        card.style.display = "block";
-        foundCount++;
-      } else {
-        card.style.display = "none";
-      }
-    });
-    
-    if(foundCount === 0 && value !== "") {
-      noResultMsg.style.display = "block";
-    } else {
-      noResultMsg.style.display = "none";
-    }
-  }
-
-  // 1. Search on typing
-  searchInput.addEventListener("keyup", function(e){
-    doSearch();
-    if(e.key === "Enter"){
-      doSearch();
-    }
-  });
-
-  // 2. Search on button click
-  searchBtn.addEventListener("click", function(){
-    doSearch();
-  });
-  
 }
 
 });
+
+});
+
+document.querySelectorAll("section").forEach(sec=>{
+
+sec.classList.add("fade");
+
+observer.observe(sec);
+
+});
+
+/* Tool Search */
+
+const search=document.querySelector(".searchBox input");
+
+if(search){
+
+search.addEventListener("keyup",function(){
+
+const value=this.value.toLowerCase();
+
+document.querySelectorAll(".toolCard").forEach(card=>{
+
+const text=card.innerText.toLowerCase();
+
+card.style.display=text.includes(value)?"block":"none";
+
+});
+
+});
+
+}
+
 </script>
+
 </body>
+
 </html>
