@@ -1432,9 +1432,7 @@ const searchBtn = document.querySelector(".searchBox button");
 function searchTools() {
     const value = searchInput.value.trim().toLowerCase();
 
-    const cards = document.querySelectorAll(".toolCard");
-
-    cards.forEach(function(card) {
+    document.querySelectorAll(".toolCard").forEach(card => {
         const text = card.textContent.toLowerCase();
 
         if (text.includes(value) || value === "") {
@@ -1444,16 +1442,17 @@ function searchTools() {
         }
     });
 
-    if (value !== "") {
-        document.getElementById("tools").scrollIntoView({
-            behavior: "smooth"
-        });
-    }
+    // Scroll to tools section
+    document.getElementById("tools").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
+// Search when button is clicked
 searchBtn.addEventListener("click", searchTools);
 
-searchInput.addEventListener("keyup", function(e) {
+// Search when Enter is pressed
+searchInput.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
         searchTools();
     }
