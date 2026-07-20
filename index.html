@@ -388,17 +388,13 @@ Explore Creator Store
 </div>
 
 <div class="searchBox">
-
 <input
 type="text"
+id="searchInput"
 placeholder="Search tools...">
-
-<button>
-
+<button id="searchBtn">
 <i class="fa-solid fa-magnifying-glass"></i>
-
 </button>
-
 </div>
 
 </div>
@@ -1424,26 +1420,47 @@ observer.observe(sec);
 
 });
 
-/* Tool Search */
+/* Tool Search - Works on Typing + Button Click + Enter */
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
 
-const search=document.querySelector(".searchBox input");
+function searchTools() {
+  const value = searchInput.value.toLowerCase();
+  let found = false;
+  
+  document.querySelectorAll(".toolCard").forEach(card => {
+    const text = card.innerText.toLowerCase();
+    if(text.includes(value)) {
+      card.style.display = "block";
+      found = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+  
+  // Show "no results" message if nothing found
+  if(!found && value !== "") {
+    document.querySelector(".toolGrid").innerHTML = "<p style='text-align:center;grid-column:1/-1;font-size:18px;color:#666;'>No tools found for '"+value+"'</p>";
+  } else if(value === "") {
+    location.reload(); // reload to show all tools again
+  }
+}
 
-if(search){
+if(searchInput){
+  // Search while typing
+  searchInput.addEventListener("keyup",function(e){
+    searchTools();
+    if(e.key === "Enter"){
+      searchTools();
+    }
+  });
+}
 
-search.addEventListener("keyup",function(){
-
-const value=this.value.toLowerCase();
-
-document.querySelectorAll(".toolCard").forEach(card=>{
-
-const text=card.innerText.toLowerCase();
-
-card.style.display=text.includes(value)?"block":"none";
-
-});
-
-});
-
+if(searchBtn){
+  // Search on button click
+  searchBtn.addEventListener("click",function(){
+    searchTools();
+  });
 }
 
 </script>
