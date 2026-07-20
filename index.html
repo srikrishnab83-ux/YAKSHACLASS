@@ -1420,51 +1420,46 @@ observer.observe(sec);
 
 });
 
-/* Tool Search - Works on Typing + Button Click + Enter */
-const searchInput = document.getElementById("searchInput");
-const searchBtn = document.getElementById("searchBtn");
+<script>
+/* ===========================
+Live Product Search - Works on Button + Enter
+=========================== */
 
-function searchTools() {
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.querySelector(".search-box button"); // targets your magnifying glass button
+
+function doSearch() {
   const value = searchInput.value.toLowerCase();
-  let found = false;
   
-  document.querySelectorAll(".toolCard").forEach(card => {
-    const text = card.innerText.toLowerCase();
-    if(text.includes(value)) {
+  document.querySelectorAll(".product-card")
+  .forEach(card => {
+    if(card.innerText.toLowerCase().includes(value)) {
       card.style.display = "block";
-      found = true;
     } else {
       card.style.display = "none";
     }
   });
-  
-  // Show "no results" message if nothing found
-  if(!found && value !== "") {
-    document.querySelector(".toolGrid").innerHTML = "<p style='text-align:center;grid-column:1/-1;font-size:18px;color:#666;'>No tools found for '"+value+"'</p>";
-  } else if(value === "") {
-    location.reload(); // reload to show all tools again
-  }
 }
 
+// 1. Search on typing
 if(searchInput){
-  // Search while typing
-  searchInput.addEventListener("keyup",function(e){
-    searchTools();
+  searchInput.addEventListener("keyup", function(e){
+    doSearch();
+    // Also search when user presses Enter
     if(e.key === "Enter"){
-      searchTools();
+      doSearch();
     }
   });
 }
 
+// 2. Search on button click
 if(searchBtn){
-  // Search on button click
-  searchBtn.addEventListener("click",function(){
-    searchTools();
+  searchBtn.addEventListener("click", function(){
+    doSearch();
   });
 }
 
 </script>
-
 </body>
 
 </html>
