@@ -1368,6 +1368,8 @@ transform:translateY(0);
 
 <script>
 
+<script>
+
 /* Back to top */
 const btn=document.getElementById("backTop");
 window.addEventListener("scroll",()=>{
@@ -1388,12 +1390,13 @@ if(entry.isIntersecting){
 entry.target.classList.add("show");
 }
 });
+}); // <-- THIS WAS MISSING
 document.querySelectorAll("section").forEach(sec=>{
 sec.classList.add("fade");
 observer.observe(sec);
 });
 
-/* Tool Search - FIXED FOR YOUR SITE */
+/* Tool Search - WORKING VERSION */
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const toolGrid = document.querySelector(".toolGrid");
@@ -1408,7 +1411,7 @@ function doSearch() {
   const value = searchInput.value.toLowerCase().trim();
   let foundCount = 0;
   
-  document.querySelectorAll(".toolCard")  // <-- IMPORTANT: .toolCard not .product-card
+  document.querySelectorAll(".toolCard")
   .forEach(card => {
     const text = card.innerText.toLowerCase();
     if(text.includes(value) || value === "") {
@@ -1445,5 +1448,4 @@ if(searchBtn){
 
 </script>
 </body>
-
 </html>
