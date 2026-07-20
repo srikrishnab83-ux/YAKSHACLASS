@@ -1426,34 +1426,10 @@ observer.observe(sec);
 
 /* Tool Search */
 
-const searchInput = document.querySelector(".searchBox input");
 const searchBtn = document.querySelector(".searchBox button");
 
-function searchTools() {
-    const value = searchInput.value.trim().toLowerCase();
-
-    document.querySelectorAll(".toolCard").forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(value) ? "block" : "none";
-    });
-
-    // Scroll to tools section
-    document.getElementById("tools").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-// Typing
-searchInput.addEventListener("keyup", searchTools);
-
-// Clicking the search button
-searchBtn.addEventListener("click", searchTools);
-
-// Pressing Enter
-searchInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        searchTools();
-    }
+searchBtn.addEventListener("click", function () {
+    alert("Search button is working!");
 });
 </script>
 
