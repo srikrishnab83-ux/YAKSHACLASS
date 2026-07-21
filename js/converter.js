@@ -1,48 +1,120 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const uploadBoxes = document.querySelectorAll(".upload-box");
+const from = document.getElementById("fromFormat");
+const to = document.getElementById("toFormat");
+const fileInput = document.getElementById("fileInput");
+const convertBtn = document.getElementById("convertBtn");
+const progressBar = document.getElementById("progressBar");
+const downloadBtn = document.getElementById("downloadBtn");
 
-    uploadBoxes.forEach(box => {
+const formats = {
 
-        const input = box.querySelector("input[type='file']");
-        const button = box.querySelector(".convert-btn");
+PDF:["Word","JPG","PNG","Excel","PowerPoint","Text"],
 
-        if (!input || !button) return;
+Word:["PDF"],
 
-        button.addEventListener("click", () => {
+JPG:["PDF"],
 
-            if (input.files.length === 0) {
-                alert("Please choose a file first.");
-                return;
-            }
+PNG:["PDF"],
 
-            const file = input.files[0];
+Excel:["PDF"],
 
-            const fileSize = (file.size / 1024 / 1024).toFixed(2);
+PowerPoint:["PDF"],
 
-            alert(
-                "Selected File:\n\n" +
-                "Name: " + file.name +
-                "\nSize: " + fileSize + " MB" +
-                "\nType: " + file.type +
-                "\n\nConverter backend will be connected in the next stage."
-            );
+HTML:["PDF"],
 
-        });
+Text:["PDF"]
 
-        input.addEventListener("change", () => {
+};
 
-            if (input.files.length > 0) {
+function updateFormats(){
 
-                const file = input.files[0];
+const list = formats[from.value];
 
-                button.textContent =
-                    "Convert " + file.name;
+to.innerHTML="";
 
-            }
+list.forEach(item=>{
 
-        });
+const option=document.createElement("option");
 
-    });
+option.value=item;
+
+option.textContent=item;
+
+to.appendChild(option);
+
+});
+
+}
+
+updateFormats();
+
+from.addEventListener("change",updateFormats);
+
+convertBtn.addEventListener("click",()=>{
+
+if(fileInput.files.length===0){
+
+alert("Please choose a file first.");
+
+return;
+
+}
+
+progressBar.style.display="block";
+
+progressBar.value=0;
+
+downloadBtn.style.display="none";
+
+let progress=0;
+
+const timer=setInterval(()=>{
+
+progress+=5;
+
+progressBar.value=progress;
+
+if(progress>=100){
+
+clearInterval(timer);
+
+alert(
+"Conversion completed.\n\nThis demo is ready for backend integration.\nActual file conversion will work after connecting a conversion API."
+);
+
+downloadBtn.style.display="inline-block";
+
+downloadBtn.textContent="Download Converted File";
+
+downloadBtn.href="#";
+
+}
+
+},100);
+
+});
+
+downloadBtn.addEventListener("click",(e)=>{
+
+e.preventDefault();
+
+alert("Backend/API is required to download the converted file.");
+
+});
+
+fileInput.addEventListener("change",()=>{
+
+if(fileInput.files.length){
+
+convertBtn.textContent="Convert: "+fileInput.files[0].name;
+
+}else{
+
+convertBtn.textContent="Convert File";
+
+}
+
+});
 
 });
