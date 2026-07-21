@@ -1,262 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Universal File Converter | VidToolkit Pro</title>
-
-<meta name="description"
-content="Convert PDF, Word, Excel, PowerPoint, Images and Text files online with VidToolkit Pro.">
-
-<meta name="keywords"
-content="PDF Converter, Word to PDF, PDF to JPG, Image Converter, Universal File Converter">
-
-<meta name="author" content="VidToolkit Pro">
-
-<meta name="robots" content="index,follow">
-
-<link rel="icon" href="favicon.png">
-
-<link rel="stylesheet" href="css/converter.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-</head>
-
-<body>
-
-<!-- ===========================
-HEADER
-=========================== -->
-
 <header>
-
-<div class="container navbar">
-
-<div class="logo">
-
-<a href="index.html">
-
-VidToolkit <span>Pro</span>
-
-</a>
-
-</div>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="converter.html">Converter</a>
-
-<a href="creator-store.html">Creator Store</a>
-
-<a href="blog.html">Blog</a>
-
-<a href="contact.html">Contact</a>
-
-</nav>
-
-</div>
-
+    <h1>VidToolkit Pro</h1>
+    <a href="index.html">← Home</a>
 </header>
 
-<!-- ===========================
-HERO
-=========================== -->
-
 <section class="hero">
-
-<div class="container">
-
-<h1>
-
-Universal File Converter
-
-</h1>
-
-<p>
-
-Convert PDF, Word, Excel, PowerPoint, Images and Text
-files from one place.
-
-Fast, secure and easy to use.
-
-</p>
-
-</div>
-
+    <h2>Universal File Converter</h2>
+    <p>Convert PDF, Word, Excel, Images and more.</p>
 </section>
 
-<!-- ===========================
-MAIN CONVERTER
-=========================== -->
+<div class="converter-container">
 
-<section>
+    <div class="converter-section">
 
-<div class="container">
+        <h2>Convert Files</h2>
 
-<div class="converter-box">
+        <div class="upload-box">
 
-<h2 style="text-align:center;margin-bottom:40px;">
+            <label>Convert From</label>
 
-Choose a Conversion
+            <select id="fromFormat">
+                <option>PDF</option>
+                <option>Word</option>
+                <option>JPG</option>
+                <option>PNG</option>
+                <option>Excel</option>
+                <option>PowerPoint</option>
+                <option>HTML</option>
+                <option>Text</option>
+            </select>
 
-</h2>
+            <br><br>
 
-<!-- ===========================
-CATEGORY GRID
-=========================== -->
+            <label>Convert To</label>
 
-<div class="category-grid">
+            <select id="toFormat">
+                <option>Word</option>
+            </select>
 
-<div class="category-card">
+            <br><br>
 
-<h3>
+            <input type="file" id="fileInput">
 
-📄 PDF Converters
+            <br><br>
 
-</h3>
+            <button class="convert-btn" id="convertBtn">
+                Convert File
+            </button>
 
-<ul>
+            <br><br>
 
-<li>PDF → Word</li>
+            <progress id="progressBar" value="0" max="100" style="width:100%;display:none;"></progress>
 
-<li>PDF → JPG</li>
+            <br><br>
 
-<li>PDF → PNG</li>
+            <a href="#" id="downloadBtn" class="convert-btn" style="display:none;">
+                Download File
+            </a>
 
-<li>PDF → Excel</li>
+        </div>
 
-<li>PDF → PowerPoint</li>
+    </div>
 
-<li>PDF → Text</li>
+    <div class="converter-section">
 
-</ul>
+        <h2>Supported Formats</h2>
 
-</div>
+        <div class="converter-grid">
 
-<div class="category-card">
+            <div class="converter-card">
+                <h3>PDF</h3>
+                <p>PDF → Word, JPG, PNG, Excel, PowerPoint, Text</p>
+            </div>
 
-<h3>
+            <div class="converter-card">
+                <h3>To PDF</h3>
+                <p>Word, JPG, PNG, Excel, PowerPoint, HTML, Text → PDF</p>
+            </div>
 
-📑 Convert To PDF
+        </div>
 
-</h3>
-
-<ul>
-
-<li>Word → PDF</li>
-
-<li>JPG → PDF</li>
-
-<li>PNG → PDF</li>
-
-<li>Excel → PDF</li>
-
-<li>PowerPoint → PDF</li>
-
-<li>HTML → PDF</li>
-
-<li>Text → PDF</li>
-
-</ul>
-
-</div>
-
-<div class="category-card">
-
-<h3>
-
-🖼 Image Converter
-
-</h3>
-
-<ul>
-
-<li>JPG → PNG</li>
-
-<li>PNG → JPG</li>
-
-<li>JPG → WEBP</li>
-
-<li>WEBP → PNG</li>
-
-<li>WEBP → JPG</li>
-
-<li>PNG → WEBP</li>
-
-</ul>
+    </div>
 
 </div>
 
-<div class="category-card">
+<footer>
+    <p>© 2026 VidToolkit Pro</p>
+</footer>
 
-<h3>
-
-⭐ Popular Tools
-
-</h3>
-
-<ul>
-
-<li>Compress Image</li>
-
-<li>Resize Image</li>
-
-<li>Crop Image</li>
-
-<li>Rotate Image</li>
-
-<li>Merge PDF</li>
-
-<li>Split PDF</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<!-- ===========================
-UPLOAD AREA
-=========================== -->
-
-<div class="upload-area">
-
-<i class="fa-solid fa-cloud-arrow-up"></i>
-
-<h2>
-
-Drag & Drop Your File
-
-</h2>
-
-<p>
-
-or click the button below
-
-</p>
-
-<input type="file" id="fileInput">
-
-<label for="fileInput" class="upload-btn">
-
-Choose File
-
-</label>
-
-<p id="fileName"
-style="margin-top:20px;">
-
-No file selected
-
-</p>
-
-</div>
+<script src="js/converter.js"></script>
