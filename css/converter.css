@@ -6,7 +6,7 @@
 }
 
 body{
-    background:#f5f7fb;
+    background:#f4f7fb;
     color:#222;
 }
 
@@ -15,15 +15,15 @@ body{
 header{
     background:#2563eb;
     color:#fff;
-    padding:18px 8%;
+    padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
 header h1{
-    font-size:28px;
-    font-weight:700;
+    font-size:30px;
 }
 
 header a{
@@ -36,9 +36,9 @@ header a{
 
 .hero{
     text-align:center;
-    padding:70px 20px;
+    padding:60px 20px;
     background:linear-gradient(135deg,#2563eb,#0ea5e9);
-    color:white;
+    color:#fff;
 }
 
 .hero h2{
@@ -47,84 +47,69 @@ header a{
 }
 
 .hero p{
-    max-width:700px;
-    margin:auto;
     font-size:18px;
     opacity:.95;
 }
 
-/* Converter Container */
+/* Main Container */
 
 .converter-container{
-    width:92%;
-    max-width:1200px;
-    margin:60px auto;
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
 }
 
 /* Sections */
 
 .converter-section{
-    margin-bottom:60px;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    margin-bottom:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .converter-section h2{
     text-align:center;
     margin-bottom:30px;
-    font-size:32px;
     color:#2563eb;
 }
 
-/* Grid */
+/* Upload Box */
 
-.converter-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+.upload-box{
+    max-width:650px;
+    margin:auto;
 }
 
-/* Card */
-
-.converter-card{
-    background:#fff;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-    transition:.35s;
+.upload-box label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
 }
 
-.converter-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 40px rgba(37,99,235,.18);
+.upload-box select,
+.upload-box input[type=file]{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+    margin-bottom:18px;
 }
-
-.converter-card i{
-    font-size:55px;
-    color:#2563eb;
-    margin-bottom:20px;
-}
-
-.converter-card h3{
-    margin-bottom:12px;
-    font-size:22px;
-}
-
-.converter-card p{
-    color:#666;
-    margin-bottom:22px;
-    line-height:1.6;
-}
-
-/* Button */
 
 .convert-btn{
     display:inline-block;
-    padding:12px 28px;
+    width:100%;
     background:#2563eb;
-    color:white;
-    border-radius:40px;
-    text-decoration:none;
+    color:#fff;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
     font-weight:600;
+    text-decoration:none;
     transition:.3s;
 }
 
@@ -132,33 +117,54 @@ header a{
     background:#1d4ed8;
 }
 
-/* Upload Box */
+/* Progress */
 
-.upload-box{
-    border:2px dashed #2563eb;
-    border-radius:18px;
-    padding:35px;
+progress{
+    width:100%;
+    height:18px;
     margin-top:20px;
-    background:#fff;
-    text-align:center;
 }
 
-.upload-box input{
-    margin-top:18px;
+/* Supported Formats */
+
+.converter-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.converter-card{
+    background:#f8fbff;
+    border:1px solid #dce9ff;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.converter-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 25px rgba(37,99,235,.15);
+}
+
+.converter-card h3{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.converter-card p{
+    color:#555;
+    line-height:1.7;
 }
 
 /* Footer */
 
 footer{
-    margin-top:80px;
     background:#111827;
-    color:white;
+    color:#fff;
     text-align:center;
-    padding:35px;
-}
-
-footer p{
-    opacity:.85;
+    padding:25px;
+    margin-top:60px;
 }
 
 /* Mobile */
@@ -169,20 +175,13 @@ footer p{
     font-size:30px;
 }
 
-.hero p{
-    font-size:16px;
+.converter-section{
+    padding:25px;
 }
 
-.converter-section h2{
-    font-size:26px;
-}
-
-.converter-card{
-    padding:24px;
-}
-
-.converter-card h3{
-    font-size:20px;
+header{
+    flex-direction:column;
+    gap:10px;
 }
 
 }
