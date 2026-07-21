@@ -6,23 +6,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Universal File Converter | PDF, Word, JPG, PNG, Excel Converter | VidToolkit Pro</title>
+<title>Universal File Converter | VidToolkit Pro</title>
 
-<meta name="description" content="Free online file converter. Convert PDF to Word, PDF to JPG, Word to PDF, Excel to PDF, PNG to PDF and many other formats quickly and securely with VidToolkit Pro.">
+<meta name="description"
+content="Convert PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text files online for free with VidToolkit Pro.">
 
-<meta name="keywords" content="PDF Converter, Word to PDF, PDF to Word, JPG to PDF, PNG to PDF, Excel to PDF, PowerPoint to PDF, Online File Converter, Free File Converter">
+<meta name="keywords"
+content="PDF Converter, Word to PDF, PDF to Word, JPG to PDF, PNG to PDF, Excel to PDF, Online File Converter">
 
 <meta name="robots" content="index,follow">
 
 <meta name="author" content="VidToolkit Pro">
-
-<link rel="canonical" href="https://yourdomain.com/converter.html">
-
-<meta property="og:title" content="Universal File Converter | VidToolkit Pro">
-
-<meta property="og:description" content="Convert PDF, Word, Excel, Images and more online for free.">
-
-<meta property="og:type" content="website">
 
 <link rel="icon" href="favicon.png">
 
@@ -39,32 +33,53 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header class="header">
 
-<div class="container nav">
+<div class="container">
+
+<div class="navbar">
 
 <a href="index.html" class="logo">
+
 <i class="fa-solid fa-file"></i>
+
 VidToolkit <span>Pro</span>
+
 </a>
 
 <nav>
 
 <a href="index.html">Home</a>
 
-<a href="creator-store.html">Creator Store</a>
+<a href="#converter">Converter</a>
 
-<a href="blog.html">Blog</a>
+<a href="#formats">Formats</a>
+
+<a href="#faq">FAQ</a>
 
 <a href="contact.html">Contact</a>
 
 </nav>
 
+</div>
+
+</div>
+
 </header>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="container heroGrid">
 
-<div>
+<div class="heroContent">
+
+<span class="badge">
+
+<i class="fa-solid fa-bolt"></i>
+
+Fast • Secure • Browser Based
+
+</span>
 
 <h1>
 
@@ -74,7 +89,8 @@ Universal File Converter
 
 <p>
 
-Convert PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text files instantly using our free online converter.
+Convert PDF, Word, Excel, PowerPoint, Images and Text files in seconds.
+Fast, secure and completely browser-based.
 
 </p>
 
@@ -82,23 +98,59 @@ Convert PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text files instantly us
 
 <a href="#converter" class="primaryBtn">
 
-Start Converting
+Convert Files
 
 </a>
 
 <a href="#formats" class="secondaryBtn">
 
-Supported Formats
+View Formats
 
 </a>
 
 </div>
 
+<div class="heroFeatures">
+
+<div>
+
+<i class="fa-solid fa-shield-halved"></i>
+
+Secure
+
 </div>
 
-<div class="heroIcon">
+<div>
 
-<i class="fa-solid fa-file-arrow-up"></i>
+<i class="fa-solid fa-bolt"></i>
+
+Fast
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+Mobile Friendly
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-cloud"></i>
+
+Cloud Based
+
+</div>
+
+</div>
+
+</div>
+
+<div class="heroImage">
+
+<i class="fa-solid fa-file-arrow-up heroIcon"></i>
 
 </div>
 
@@ -106,9 +158,13 @@ Supported Formats
 
 </section>
 
+<!-- CONVERTER -->
+
 <section id="converter" class="converterSection">
 
 <div class="container">
+
+<div class="converterCard">
 
 <h2>
 
@@ -116,17 +172,15 @@ Convert Your Files
 
 </h2>
 
-<p class="subtitle">
+<p>
 
-Upload your file, choose the output format and convert instantly.
+Choose the source format, select the destination format and upload your file.
 
 </p>
 
-<div class="converterBox">
+<div class="converterForm">
 
-<div class="row">
-
-<div class="inputGroup">
+<div class="formGroup">
 
 <label>
 
@@ -137,26 +191,19 @@ Convert From
 <select id="fromFormat">
 
 <option>PDF</option>
-
 <option>Word</option>
-
 <option>JPG</option>
-
 <option>PNG</option>
-
 <option>Excel</option>
-
 <option>PowerPoint</option>
-
 <option>HTML</option>
-
 <option>Text</option>
 
 </select>
 
 </div>
 
-<div class="inputGroup">
+<div class="formGroup">
 
 <label>
 
@@ -174,19 +221,19 @@ Convert To
 
 </div>
 
-<div class="uploadArea">
+<div class="uploadBox">
 
-<i class="fa-solid fa-cloud-arrow-up"></i>
+<i class="fa-solid fa-cloud-arrow-up uploadIcon"></i>
 
 <h3>
 
-Drag & Drop File Here
+Drag & Drop Your File
 
 </h3>
 
 <p>
 
-or
+or choose from your device
 
 </p>
 
@@ -194,87 +241,208 @@ or
 
 </div>
 
+<div class="fileInfo" id="fileInfo">
+
+No file selected
+
+</div>
+
 <button id="convertBtn" class="convertBtn">
 
-Convert File
+<i class="fa-solid fa-rotate"></i>
+
+Convert Now
 
 </button>
 
-<progress
-id="progressBar"
-value="0"
-max="100"
-style="display:none;"></progress>
+<progress id="progressBar" value="0" max="100"></progress>
 
-<a
-id="downloadBtn"
-href="#"
-class="downloadBtn"
-style="display:none;">
+<a href="#" id="downloadBtn" class="downloadBtn">
+
+<i class="fa-solid fa-download"></i>
 
 Download Converted File
 
 </a>
 
+<div class="note">
+
+<i class="fa-solid fa-circle-info"></i>
+
+Maximum upload size: 100 MB
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section id="formats">
+<!-- POPULAR CONVERSIONS -->
+
+<section id="formats" class="popularConversions">
 
 <div class="container">
 
 <h2>
 
-Supported Conversions
+Popular File Conversions
 
 </h2>
 
-<p class="subtitle">
+<p>
 
-Choose any conversion below.
+Choose from our most commonly used online converters.
 
 </p>
 
-<div class="converterGrid">
-<div class="converterCard">
-
+<div class="conversionGrid">
+ <div class="conversionCard">
 <i class="fa-solid fa-file-pdf"></i>
+<h3>PDF → Word</h3>
+<p>Convert PDF documents into editable Word files.</p>
+</div>
 
-<h3>PDF Conversions</h3>
+<div class="conversionCard">
+<i class="fa-solid fa-file-image"></i>
+<h3>PDF → JPG</h3>
+<p>Extract every PDF page as high-quality JPG images.</p>
+</div>
 
-<ul>
+<div class="conversionCard">
+<i class="fa-solid fa-image"></i>
+<h3>PDF → PNG</h3>
+<p>Convert PDF pages into transparent PNG images.</p>
+</div>
 
-<li>PDF → Word</li>
-<li>PDF → JPG</li>
-<li>PDF → PNG</li>
-<li>PDF → Excel</li>
-<li>PDF → PowerPoint</li>
-<li>PDF → Text</li>
+<div class="conversionCard">
+<i class="fa-solid fa-table"></i>
+<h3>PDF → Excel</h3>
+<p>Extract tables from PDF into editable spreadsheets.</p>
+</div>
 
-</ul>
+<div class="conversionCard">
+<i class="fa-solid fa-file-powerpoint"></i>
+<h3>PDF → PowerPoint</h3>
+<p>Convert PDF presentations into editable slides.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-file-lines"></i>
+<h3>PDF → Text</h3>
+<p>Extract plain text from PDF files instantly.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-file-word"></i>
+<h3>Word → PDF</h3>
+<p>Create professional PDF documents from Word files.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-image"></i>
+<h3>JPG → PDF</h3>
+<p>Combine JPG images into one high-quality PDF.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-image"></i>
+<h3>PNG → PDF</h3>
+<p>Convert PNG images into printable PDF files.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-table"></i>
+<h3>Excel → PDF</h3>
+<p>Export Excel spreadsheets into PDF format.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-file-powerpoint"></i>
+<h3>PowerPoint → PDF</h3>
+<p>Turn presentations into professional PDF documents.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-code"></i>
+<h3>HTML → PDF</h3>
+<p>Convert webpages into printable PDF files.</p>
+</div>
+
+<div class="conversionCard">
+<i class="fa-solid fa-file-lines"></i>
+<h3>Text → PDF</h3>
+<p>Transform TXT documents into PDF format.</p>
+</div>
 
 </div>
 
-<div class="converterCard">
+</div>
 
-<i class="fa-solid fa-file-export"></i>
+</section>
 
-<h3>Convert To PDF</h3>
+<!-- HOW IT WORKS -->
 
-<ul>
+<section class="howWorks">
 
-<li>Word → PDF</li>
-<li>JPG → PDF</li>
-<li>PNG → PDF</li>
-<li>Excel → PDF</li>
-<li>PowerPoint → PDF</li>
-<li>HTML → PDF</li>
-<li>Text → PDF</li>
+<div class="container">
 
-</ul>
+<h2>How It Works</h2>
+
+<p class="sectionText">
+
+Convert files in just four simple steps.
+
+</p>
+
+<div class="stepsGrid">
+
+<div class="stepCard">
+
+<div class="stepNumber">1</div>
+
+<i class="fa-solid fa-upload"></i>
+
+<h3>Upload</h3>
+
+<p>Select the file from your computer or mobile device.</p>
+
+</div>
+
+<div class="stepCard">
+
+<div class="stepNumber">2</div>
+
+<i class="fa-solid fa-arrows-rotate"></i>
+
+<h3>Select Format</h3>
+
+<p>Choose the output format you want to convert into.</p>
+
+</div>
+
+<div class="stepCard">
+
+<div class="stepNumber">3</div>
+
+<i class="fa-solid fa-gears"></i>
+
+<h3>Convert</h3>
+
+<p>Our engine processes your file securely.</p>
+
+</div>
+
+<div class="stepCard">
+
+<div class="stepNumber">4</div>
+
+<i class="fa-solid fa-download"></i>
+
+<h3>Download</h3>
+
+<p>Download your newly converted file instantly.</p>
 
 </div>
 
@@ -283,6 +451,8 @@ Choose any conversion below.
 </div>
 
 </section>
+
+<!-- WHY CHOOSE US -->
 
 <section class="features">
 
@@ -294,19 +464,21 @@ Why Choose VidToolkit Pro?
 
 </h2>
 
+<p class="sectionText">
+
+Professional online conversion without complicated software.
+
+</p>
+
 <div class="featureGrid">
 
 <div class="featureCard">
 
 <i class="fa-solid fa-bolt"></i>
 
-<h3>Fast Conversion</h3>
+<h3>Lightning Fast</h3>
 
-<p>
-
-Convert files in seconds.
-
-</p>
+<p>Optimized conversion speed for everyday files.</p>
 
 </div>
 
@@ -314,27 +486,19 @@ Convert files in seconds.
 
 <i class="fa-solid fa-lock"></i>
 
-<h3>Secure</h3>
+<h3>Secure Files</h3>
 
-<p>
-
-Your files remain private.
-
-</p>
+<p>Your uploaded documents remain private.</p>
 
 </div>
 
 <div class="featureCard">
 
-<i class="fa-solid fa-mobile-screen"></i>
+<i class="fa-solid fa-award"></i>
 
-<h3>Mobile Friendly</h3>
+<h3>High Quality</h3>
 
-<p>
-
-Works on every device.
-
-</p>
+<p>Maintain excellent output quality.</p>
 
 </div>
 
@@ -342,13 +506,29 @@ Works on every device.
 
 <i class="fa-solid fa-cloud"></i>
 
-<h3>Cloud Based</h3>
+<h3>No Installation</h3>
 
-<p>
+<p>Everything works directly in your browser.</p>
 
-No software installation required.
+</div>
 
-</p>
+<div class="featureCard">
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+<h3>Works Everywhere</h3>
+
+<p>Desktop, tablet and mobile supported.</p>
+
+</div>
+
+<div class="featureCard">
+
+<i class="fa-solid fa-heart"></i>
+
+<h3>Free to Use</h3>
+
+<p>Convert common file formats without cost.</p>
 
 </div>
 
@@ -358,52 +538,130 @@ No software installation required.
 
 </section>
 
-<section class="faqSection">
+<!-- STATISTICS -->
+
+<section class="statistics">
 
 <div class="container">
 
-<h2>
+<div class="statsGrid">
 
-Frequently Asked Questions
+<div class="statCard">
 
-</h2>
+<h2>15+</h2>
+
+<p>Supported Formats</p>
+
+</div>
+
+<div class="statCard">
+
+<h2>100%</h2>
+
+<p>Browser Based</p>
+
+</div>
+
+<div class="statCard">
+
+<h2>24/7</h2>
+
+<p>Always Available</p>
+
+</div>
+
+<div class="statCard">
+
+<h2>Fast</h2>
+
+<p>Processing Engine</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+  <!-- ==========================
+SEO CONTENT
+========================== -->
+
+<section class="seoSection">
+
+<div class="container">
+
+<h2>Free Online File Converter</h2>
+
+<p>
+
+VidToolkit Pro provides a fast, secure and easy-to-use online file converter for students,
+professionals, businesses and content creators. Convert PDF documents, Microsoft Word files,
+Excel spreadsheets, PowerPoint presentations, HTML files, text documents and popular image
+formats directly in your browser without installing any software.
+
+</p>
+
+<p>
+
+Our browser-based converter is designed for simplicity and speed. Whether you need to convert
+PDF to Word, Word to PDF, JPG to PDF, PNG to PDF or many other formats, VidToolkit Pro helps
+you complete conversions quickly while maintaining excellent quality.
+
+</p>
+
+<p>
+
+The platform works on Windows, macOS, Linux, Android and iPhone, allowing you to convert
+documents from virtually any device. We continue adding new tools and supported file formats
+to make VidToolkit Pro your all-in-one productivity platform.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ==========================
+FAQ
+========================== -->
+
+<section id="faq" class="faqSection">
+
+<div class="container">
+
+<h2>Frequently Asked Questions</h2>
 
 <div class="faq">
 
 <details>
-
 <summary>Is this converter free?</summary>
-
-<p>
-
-Yes. All basic conversions are free.
-
-</p>
-
+<p>Yes. Most common file conversions are available free of charge.</p>
 </details>
 
 <details>
-
-<summary>Are my uploaded files secure?</summary>
-
-<p>
-
-Yes. Files are processed securely and removed automatically.
-
-</p>
-
+<summary>Do I need to install software?</summary>
+<p>No. Everything works directly inside your browser.</p>
 </details>
 
 <details>
+<summary>Are my files secure?</summary>
+<p>Your uploaded files are processed securely. When you later connect a backend, you can also configure automatic deletion after processing.</p>
+</details>
 
-<summary>Which formats are supported?</summary>
+<details>
+<summary>Which file formats are supported?</summary>
+<p>PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text formats, with more planned.</p>
+</details>
 
-<p>
+<details>
+<summary>Can I use this on mobile?</summary>
+<p>Yes. The converter is fully responsive and works on Android phones, iPhones and tablets.</p>
+</details>
 
-PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text.
-
-</p>
-
+<details>
+<summary>Will more converters be added?</summary>
+<p>Yes. Future updates will include PDF Merge, PDF Split, Image Compressor, OCR, WebP Converter and many more.</p>
 </details>
 
 </div>
@@ -412,27 +670,160 @@ PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text.
 
 </section>
 
-<footer>
+<!-- ==========================
+RELATED TOOLS
+========================== -->
+
+<section class="relatedTools">
 
 <div class="container">
 
-<h2>
+<h2>Explore More Free Tools</h2>
 
-VidToolkit Pro
+<div class="relatedGrid">
 
-</h2>
+<a href="image-compressor.html" class="relatedCard">
+<i class="fa-solid fa-compress"></i>
+<h3>Image Compressor</h3>
+</a>
+
+<a href="image-converter.html" class="relatedCard">
+<i class="fa-solid fa-image"></i>
+<h3>Image Converter</h3>
+</a>
+
+<a href="image-resizer.html" class="relatedCard">
+<i class="fa-solid fa-expand"></i>
+<h3>Image Resizer</h3>
+</a>
+
+<a href="qr-generator.html" class="relatedCard">
+<i class="fa-solid fa-qrcode"></i>
+<h3>QR Generator</h3>
+</a>
+
+<a href="youtube-tag-extractor.html" class="relatedCard">
+<i class="fa-solid fa-tags"></i>
+<h3>Tag Extractor</h3>
+</a>
+
+<a href="youtubetitlegenerator.html" class="relatedCard">
+<i class="fa-solid fa-font"></i>
+<h3>Title Generator</h3>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================
+CALL TO ACTION
+========================== -->
+
+<section class="ctaSection">
+
+<div class="container">
+
+<h2>Ready to Convert Your Files?</h2>
 
 <p>
 
-Professional creator tools and free online file converters.
+Fast. Secure. Free. Start converting your files with VidToolkit Pro today.
 
 </p>
+
+<a href="#converter" class="primaryBtn">
+
+Start Converting
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ==========================
+FOOTER
+========================== -->
+
+<footer class="footer">
+
+<div class="container footerGrid">
+
+<div>
+
+<h3>VidToolkit Pro</h3>
 
 <p>
 
-© 2026 VidToolkit Pro. All Rights Reserved.
+Your all-in-one creator platform featuring free online tools, file converters,
+creator resources and productivity utilities.
 
 </p>
+
+</div>
+
+<div>
+
+<h4>Popular Tools</h4>
+
+<ul>
+
+<li><a href="converter.html">File Converter</a></li>
+
+<li><a href="youtube-tag-extractor.html">Tag Extractor</a></li>
+
+<li><a href="youtubetitlegenerator.html">Title Generator</a></li>
+
+<li><a href="youviddiscgener.html">Description Generator</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>Company</h4>
+
+<ul>
+
+<li><a href="about.html">About Us</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="privacy.html">Privacy Policy</a></li>
+
+<li><a href="terms.html">Terms & Conditions</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>Follow</h4>
+
+<div class="socialIcons">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 <strong>VidToolkit Pro</strong>. All Rights Reserved.
 
 </div>
 
@@ -441,5 +832,4 @@ Professional creator tools and free online file converters.
 <script src="js/converter.js"></script>
 
 </body>
-
 </html>
