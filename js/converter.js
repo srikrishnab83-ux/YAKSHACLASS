@@ -1,39 +1,231 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* ==========================================
+   VidToolkit Pro - Universal File Converter
+   Part 1
+========================================== */
 
-const from = document.getElementById("fromFormat");
-const to = document.getElementById("toFormat");
+const fromFormat = document.getElementById("fromFormat");
+const toFormat = document.getElementById("toFormat");
 const fileInput = document.getElementById("fileInput");
 const convertBtn = document.getElementById("convertBtn");
 const progressBar = document.getElementById("progressBar");
 const downloadBtn = document.getElementById("downloadBtn");
 
-const formats = {
+/* Create file information box */
 
-PDF:["Word","JPG","PNG","Excel","PowerPoint","Text"],
+const fileInfo = document.createElement("div");
+fileInfo.className = "fileInfo";
+fileInfo.style.display = "none";
 
-Word:["PDF"],
+const uploadArea =
+document.querySelector(".uploadArea") ||
+document.querySelector(".uploadBox");
 
-JPG:["PDF"],
+if(uploadArea){
+    uploadArea.appendChild(fileInfo);
+}
 
-PNG:["PDF"],
+let selectedFile = null;
 
-Excel:["PDF"],
+/* -----------------------------
+   File Size Formatter
+------------------------------ */
 
-PowerPoint:["PDF"],
+function formatFileSize(bytes){
 
-HTML:["PDF"],
+    if(bytes < 1024){
+        return bytes + " Bytes";
+    }
 
-Text:["PDF"]
+    if(bytes < 1024 * 1024){
+        return (bytes/1024).toFixed(2) + " KB";
+    }
+
+    if(bytes < 1024 * 1024 * 1024){
+        return (bytes/(1024*1024)).toFixed(2) + " MB";
+    }
+
+    return (bytes/(1024*1024*1024)).toFixed(2) + " GB";
+
+}
+
+/* -----------------------------
+   Display Selected File
+------------------------------ */
+
+function showFile(file){
+
+    selectedFile = file;
+
+    fileInfo.style.display = "block";
+
+    fileInfo.innerHTML = `
+        <strong>Selected File</strong><br><br>
+
+        📄 ${file.name}<br>
+
+        📦 ${formatFileSize(file.size)}
+    `;
+
+}
+
+/* -----------------------------
+   File Validation
+------------------------------ */
+
+function validateFile(file){
+
+    if(!file){
+
+        alert("Please select a file.");
+
+        return false;
+
+    }
+
+    const maxSize = 100 * 1024 * 1024;
+
+    if(file.size > maxSize){
+
+        alert("Maximum file size is 100 MB.");
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/* -----------------------------
+   File Input
+------------------------------ */
+
+fileInput.addEventListener("change",function(){
+
+    if(this.files.length===0){
+
+        return;
+
+    }
+
+    const file = this.files[0];
+
+    if(validateFile(file)){
+
+        showFile(file);
+
+    }
+
+});
+
+/* -----------------------------
+   Drag & Drop
+------------------------------ */
+
+if(uploadArea){
+
+uploadArea.addEventListener("dragover",function(e){
+
+    e.preventDefault();
+
+    this.style.borderColor="#16a34a";
+
+    this.style.background="#eefdf2";
+
+});
+
+uploadArea.addEventListener("dragleave",function(){
+
+    this.style.borderColor="#2563eb";
+
+    this.style.background="#f8fbff";
+
+});
+
+uploadArea.addEventListener("drop",function(e){
+
+    e.preventDefault();
+
+    this.style.borderColor="#2563eb";
+
+    this.style.background="#f8fbff";
+
+    if(e.dataTransfer.files.length===0){
+
+        return;
+
+    }
+
+    const file = e.dataTransfer.files[0];
+
+    if(validateFile(file)){
+
+        fileInput.files = e.dataTransfer.files;
+
+        showFile(file);
+
+    }
+
+});
+
+}
+/* ==========================================
+   Part 2
+   Dynamic Format Mapping + Convert Logic
+========================================== */
+
+const conversionMap = {
+
+PDF:[
+"Word",
+"JPG",
+"PNG",
+"Excel",
+"PowerPoint",
+"Text"
+],
+
+Word:[
+"PDF"
+],
+
+JPG:[
+"PDF"
+],
+
+PNG:[
+"PDF"
+],
+
+Excel:[
+"PDF"
+],
+
+PowerPoint:[
+"PDF"
+],
+
+HTML:[
+"PDF"
+],
+
+Text:[
+"PDF"
+]
 
 };
 
+/* --------------------------
+   Update Convert To Options
+--------------------------- */
+
 function updateFormats(){
 
-const list = formats[from.value];
+const from = fromFormat.value;
 
-to.innerHTML="";
+toFormat.innerHTML="";
 
-list.forEach(item=>{
+conversionMap[from].forEach(function(item){
 
 const option=document.createElement("option");
 
@@ -41,7 +233,7 @@ option.value=item;
 
 option.textContent=item;
 
-to.appendChild(option);
+toFormat.appendChild(option);
 
 });
 
@@ -49,17 +241,35 @@ to.appendChild(option);
 
 updateFormats();
 
-from.addEventListener("change",updateFormats);
+fromFormat.addEventListener("change",updateFormats);
 
-convertBtn.addEventListener("click",()=>{
+/* --------------------------
+   Convert Button
+--------------------------- */
 
-if(fileInput.files.length===0){
+convertBtn.addEventListener("click",function(){
 
-alert("Please choose a file first.");
+if(selectedFile===null){
+
+alert("Please select a file first.");
 
 return;
 
 }
+
+startConversion();
+
+});
+
+/* --------------------------
+   Fake Conversion Process
+--------------------------- */
+
+function startConversion(){
+
+convertBtn.disabled=true;
+
+convertBtn.innerHTML="<i class='fa-solid fa-spinner fa-spin'></i> Converting...";
 
 progressBar.style.display="block";
 
@@ -69,7 +279,7 @@ downloadBtn.style.display="none";
 
 let progress=0;
 
-const timer=setInterval(()=>{
+const timer=setInterval(function(){
 
 progress+=5;
 
@@ -79,42 +289,203 @@ if(progress>=100){
 
 clearInterval(timer);
 
-alert(
-"Conversion completed.\n\nThis demo is ready for backend integration.\nActual file conversion will work after connecting a conversion API."
-);
+conversionFinished();
+
+}
+
+},120);
+
+}
+
+/* --------------------------
+   Conversion Finished
+--------------------------- */
+
+function conversionFinished(){
+
+convertBtn.disabled=false;
+
+convertBtn.innerHTML="<i class='fa-solid fa-check'></i> Convert Again";
 
 downloadBtn.style.display="inline-block";
 
-downloadBtn.textContent="Download Converted File";
+downloadBtn.innerHTML="<i class='fa-solid fa-download'></i> Download File";
 
 downloadBtn.href="#";
 
-}
-
-},100);
-
-});
-
-downloadBtn.addEventListener("click",(e)=>{
-
-e.preventDefault();
-
-alert("Backend/API is required to download the converted file.");
-
-});
-
-fileInput.addEventListener("change",()=>{
-
-if(fileInput.files.length){
-
-convertBtn.textContent="Convert: "+fileInput.files[0].name;
-
-}else{
-
-convertBtn.textContent="Convert File";
+alert(
+"Demo completed.\n\nConnect a real conversion backend or API to generate downloadable files."
+);
 
 }
+/* ==========================================
+   Part 3
+   Professional UI + Backend Ready
+========================================== */
+
+/* --------------------------
+   Status Message
+--------------------------- */
+
+const statusBox = document.createElement("div");
+statusBox.className = "statusBox";
+
+if (uploadArea) {
+    uploadArea.parentNode.insertBefore(statusBox, uploadArea.nextSibling);
+}
+
+function showStatus(message, type = "info") {
+
+    statusBox.innerHTML = message;
+    statusBox.className = "statusBox " + type;
+
+    setTimeout(() => {
+        statusBox.innerHTML = "";
+        statusBox.className = "statusBox";
+    }, 4000);
+
+}
+
+/* --------------------------
+   File Type Detection
+--------------------------- */
+
+function detectExtension(fileName){
+
+    return fileName.split(".").pop().toUpperCase();
+
+}
+
+fileInput.addEventListener("change",function(){
+
+    if(this.files.length===0) return;
+
+    const ext=detectExtension(this.files[0].name);
+
+    if(ext!==fromFormat.value.toUpperCase()){
+
+        showStatus(
+        "Selected file appears to be <b>"+ext+
+        "</b>. You selected <b>"+fromFormat.value+
+        "</b> as input.",
+        "warning");
+
+    }else{
+
+        showStatus(
+        "File loaded successfully.",
+        "success");
+
+    }
 
 });
 
+/* --------------------------
+   Download Button
+--------------------------- */
+
+downloadBtn.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    showStatus(
+    "Connect a real conversion API to generate downloadable files.",
+    "info");
+
 });
+
+/* --------------------------
+   Reset Converter
+--------------------------- */
+
+function resetConverter(){
+
+    progressBar.value=0;
+
+    progressBar.style.display="none";
+
+    downloadBtn.style.display="none";
+
+    fileInput.value="";
+
+    selectedFile=null;
+
+    fileInfo.style.display="none";
+
+    convertBtn.innerHTML=
+    "<i class='fa-solid fa-rotate'></i> Convert Now";
+
+}
+
+convertBtn.addEventListener("dblclick",resetConverter);
+
+/* --------------------------
+   Keyboard Shortcut
+--------------------------- */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+
+        if(document.activeElement===fileInput){
+
+            return;
+
+        }
+
+        if(selectedFile){
+
+            convertBtn.click();
+
+        }
+
+    }
+
+});
+
+/* --------------------------
+   Backend Ready Function
+--------------------------- */
+
+async function convertUsingBackend(){
+
+/*
+
+Example
+
+const formData=new FormData();
+
+formData.append("file",selectedFile);
+
+formData.append("from",fromFormat.value);
+
+formData.append("to",toFormat.value);
+
+const response=await fetch("YOUR_API_ENDPOINT",{
+
+method:"POST",
+
+body:formData
+
+});
+
+const blob=await response.blob();
+
+downloadBtn.href=URL.createObjectURL(blob);
+
+downloadBtn.download=
+"converted."+toFormat.value.toLowerCase();
+
+downloadBtn.style.display="inline-block";
+
+*/
+
+}
+
+/* --------------------------
+   Initial Status
+--------------------------- */
+
+showStatus(
+"Ready to convert your files.",
+"success");
