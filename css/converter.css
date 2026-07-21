@@ -961,3 +961,25 @@ transition:all .35s ease;
 html{
 scroll-behavior:smooth;
 }
+.statusBox{
+margin-top:20px;
+padding:15px 20px;
+border-radius:12px;
+font-weight:600;
+display:block;
+}
+
+.statusBox.info{
+background:#e0f2fe;
+color:#0369a1;
+}
+
+.statusBox.success{
+background:#dcfce7;
+color:#166534;
+}
+
+.statusBox.warning{
+background:#fef3c7;
+color:#92400e;
+}
