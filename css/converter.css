@@ -364,3 +364,600 @@ transform:translateY(0);
 }
 
 }
+/* =====================================
+POPULAR CONVERSIONS
+===================================== */
+
+.popularConversions{
+padding:90px 0;
+background:#ffffff;
+}
+
+.popularConversions h2{
+font-size:42px;
+font-weight:800;
+text-align:center;
+margin-bottom:15px;
+}
+
+.popularConversions p{
+text-align:center;
+color:#666;
+margin-bottom:55px;
+font-size:17px;
+}
+
+.conversionGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:28px;
+}
+
+.conversionCard{
+background:#fff;
+padding:35px 25px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.08);
+transition:.35s;
+border:1px solid #eef2f7;
+}
+
+.conversionCard:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(37,99,235,.18);
+}
+
+.conversionCard i{
+font-size:55px;
+color:#2563eb;
+margin-bottom:20px;
+}
+
+.conversionCard h3{
+font-size:22px;
+margin-bottom:12px;
+font-weight:700;
+}
+
+.conversionCard p{
+margin:0;
+font-size:15px;
+color:#666;
+line-height:1.6;
+}
+
+/* =====================================
+HOW IT WORKS
+===================================== */
+
+.howWorks{
+padding:90px 0;
+background:#f7faff;
+}
+
+.howWorks h2{
+font-size:42px;
+text-align:center;
+margin-bottom:15px;
+font-weight:800;
+}
+
+.sectionText{
+text-align:center;
+font-size:17px;
+color:#666;
+margin-bottom:55px;
+}
+
+.stepsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.stepCard{
+background:#fff;
+padding:35px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.08);
+transition:.3s;
+position:relative;
+}
+
+.stepCard:hover{
+transform:translateY(-8px);
+}
+
+.stepNumber{
+position:absolute;
+top:20px;
+right:20px;
+width:40px;
+height:40px;
+background:#2563eb;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+.stepCard i{
+font-size:60px;
+color:#2563eb;
+margin:25px 0;
+}
+
+.stepCard h3{
+margin-bottom:12px;
+font-size:24px;
+}
+
+.stepCard p{
+color:#666;
+}
+
+/* =====================================
+FEATURES
+===================================== */
+
+.features{
+padding:90px 0;
+}
+
+.features h2{
+text-align:center;
+font-size:42px;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.featureGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.featureCard{
+background:#fff;
+padding:35px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.08);
+transition:.35s;
+}
+
+.featureCard:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(37,99,235,.18);
+}
+
+.featureCard i{
+font-size:60px;
+color:#2563eb;
+margin-bottom:20px;
+}
+
+.featureCard h3{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.featureCard p{
+color:#666;
+line-height:1.7;
+}
+
+/* =====================================
+STATISTICS
+===================================== */
+
+.statistics{
+padding:90px 0;
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+}
+
+.statsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.statCard{
+background:rgba(255,255,255,.12);
+padding:40px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(12px);
+}
+
+.statCard h2{
+font-size:55px;
+color:#fff;
+margin-bottom:10px;
+font-weight:800;
+}
+
+.statCard p{
+color:#fff;
+font-size:18px;
+opacity:.95;
+}
+/* =====================================
+SEO SECTION
+===================================== */
+
+.seoSection{
+padding:90px 0;
+background:#fff;
+}
+
+.seoSection h2{
+text-align:center;
+font-size:42px;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.seoSection p{
+max-width:950px;
+margin:0 auto 25px;
+font-size:17px;
+line-height:1.9;
+color:#555;
+text-align:center;
+}
+
+/* =====================================
+FAQ
+===================================== */
+
+.faqSection{
+padding:90px 0;
+background:#f8fbff;
+}
+
+.faqSection h2{
+text-align:center;
+font-size:42px;
+font-weight:800;
+margin-bottom:50px;
+}
+
+.faq{
+max-width:900px;
+margin:auto;
+}
+
+.faq details{
+background:#fff;
+border-radius:18px;
+margin-bottom:18px;
+padding:20px 25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.faq details:hover{
+transform:translateY(-3px);
+}
+
+.faq summary{
+cursor:pointer;
+font-size:18px;
+font-weight:600;
+list-style:none;
+}
+
+.faq summary::-webkit-details-marker{
+display:none;
+}
+
+.faq summary::after{
+content:"+";
+float:right;
+font-size:24px;
+color:#2563eb;
+}
+
+.faq details[open] summary::after{
+content:"−";
+}
+
+.faq p{
+margin-top:15px;
+color:#666;
+line-height:1.8;
+}
+
+/* =====================================
+RELATED TOOLS
+===================================== */
+
+.relatedTools{
+padding:90px 0;
+background:#fff;
+}
+
+.relatedTools h2{
+text-align:center;
+font-size:42px;
+font-weight:800;
+margin-bottom:50px;
+}
+
+.relatedGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.relatedCard{
+background:#fff;
+padding:35px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s;
+color:#222;
+}
+
+.relatedCard:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 45px rgba(37,99,235,.18);
+}
+
+.relatedCard i{
+font-size:52px;
+color:#2563eb;
+margin-bottom:18px;
+}
+
+.relatedCard h3{
+font-size:20px;
+}
+
+/* =====================================
+CTA
+===================================== */
+
+.ctaSection{
+padding:100px 0;
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+text-align:center;
+color:#fff;
+}
+
+.ctaSection h2{
+font-size:48px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.ctaSection p{
+font-size:18px;
+max-width:700px;
+margin:auto;
+margin-bottom:40px;
+opacity:.95;
+}
+
+.ctaSection .primaryBtn{
+display:inline-block;
+}
+
+/* =====================================
+FOOTER
+===================================== */
+
+.footer{
+background:#111827;
+color:#fff;
+padding:70px 0 25px;
+}
+
+.footerGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:40px;
+margin-bottom:40px;
+}
+
+.footer h3,
+.footer h4{
+margin-bottom:20px;
+}
+
+.footer p{
+color:#ccc;
+line-height:1.8;
+}
+
+.footer ul{
+list-style:none;
+}
+
+.footer li{
+margin-bottom:12px;
+}
+
+.footer a{
+color:#ccc;
+transition:.3s;
+}
+
+.footer a:hover{
+color:#fff;
+}
+
+.socialIcons{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.socialIcons a{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+transition:.3s;
+}
+
+.socialIcons a:hover{
+transform:translateY(-5px);
+background:#1d4ed8;
+}
+
+.copyright{
+text-align:center;
+padding-top:30px;
+border-top:1px solid rgba(255,255,255,.1);
+color:#aaa;
+font-size:15px;
+}
+
+/* =====================================
+RESPONSIVE
+===================================== */
+
+@media(max-width:992px){
+
+.heroGrid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.heroIcon{
+font-size:140px;
+margin-top:40px;
+}
+
+.converterForm{
+grid-template-columns:1fr;
+}
+
+.heroButtons{
+justify-content:center;
+}
+
+.heroFeatures{
+grid-template-columns:1fr 1fr;
+}
+
+nav{
+display:none;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:70px 0;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.badge{
+font-size:13px;
+}
+
+.heroFeatures{
+grid-template-columns:1fr;
+}
+
+.converterCard{
+padding:30px;
+}
+
+.uploadBox{
+padding:35px 20px;
+}
+
+.uploadIcon{
+font-size:55px;
+}
+
+.popularConversions h2,
+.features h2,
+.howWorks h2,
+.relatedTools h2,
+.faqSection h2,
+.seoSection h2,
+.ctaSection h2{
+font-size:34px;
+}
+
+.statsGrid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:520px){
+
+.container{
+width:94%;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+.primaryBtn,
+.secondaryBtn,
+.convertBtn,
+.downloadBtn{
+width:100%;
+text-align:center;
+}
+
+.heroButtons{
+flex-direction:column;
+}
+
+.statsGrid{
+grid-template-columns:1fr;
+}
+
+.footerGrid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.socialIcons{
+justify-content:center;
+}
+
+}
+
+/* =====================================
+SMOOTH ANIMATIONS
+===================================== */
+
+.conversionCard,
+.featureCard,
+.stepCard,
+.relatedCard,
+.statCard,
+.faq details{
+transition:all .35s ease;
+}
+
+html{
+scroll-behavior:smooth;
+}
