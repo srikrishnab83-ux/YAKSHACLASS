@@ -8,13 +8,25 @@
 
 <title>Universal File Converter | PDF, Word, JPG, PNG, Excel Converter | VidToolkit Pro</title>
 
-<meta name="description" content="Free online file converter. Convert PDF to Word, JPG, PNG, Excel, PowerPoint, Text and convert Word, JPG, PNG, Excel, HTML and Text to PDF instantly.">
+<meta name="description" content="Free online file converter. Convert PDF to Word, PDF to JPG, Word to PDF, Excel to PDF, PNG to PDF and many other formats quickly and securely with VidToolkit Pro.">
 
-<meta name="keywords" content="PDF Converter, Word to PDF, JPG to PDF, PDF to Word, File Converter">
+<meta name="keywords" content="PDF Converter, Word to PDF, PDF to Word, JPG to PDF, PNG to PDF, Excel to PDF, PowerPoint to PDF, Online File Converter, Free File Converter">
+
+<meta name="robots" content="index,follow">
+
+<meta name="author" content="VidToolkit Pro">
+
+<link rel="canonical" href="https://yourdomain.com/converter.html">
+
+<meta property="og:title" content="Universal File Converter | VidToolkit Pro">
+
+<meta property="og:description" content="Convert PDF, Word, Excel, Images and more online for free.">
+
+<meta property="og:type" content="website">
+
+<link rel="icon" href="favicon.png">
 
 <link rel="stylesheet" href="css/converter.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -25,37 +37,34 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <body>
 
-<!-- Header -->
-
-<header>
+<header class="header">
 
 <div class="container nav">
 
 <a href="index.html" class="logo">
-
-<i class="fa-solid fa-toolbox"></i>
-
+<i class="fa-solid fa-file"></i>
 VidToolkit <span>Pro</span>
-
 </a>
 
-<a href="index.html" class="homeBtn">
+<nav>
 
-<i class="fa-solid fa-house"></i>
+<a href="index.html">Home</a>
 
-Home
+<a href="creator-store.html">Creator Store</a>
 
-</a>
+<a href="blog.html">Blog</a>
 
-</div>
+<a href="contact.html">Contact</a>
+
+</nav>
 
 </header>
 
-<!-- Hero -->
-
 <section class="hero">
 
-<div class="container">
+<div class="container heroGrid">
+
+<div>
 
 <h1>
 
@@ -65,81 +74,119 @@ Universal File Converter
 
 <p>
 
-Convert PDF, Word, JPG, PNG, Excel, PowerPoint, HTML and Text files online for free.
+Convert PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text files instantly using our free online converter.
 
 </p>
+
+<div class="heroButtons">
+
+<a href="#converter" class="primaryBtn">
+
+Start Converting
+
+</a>
+
+<a href="#formats" class="secondaryBtn">
+
+Supported Formats
+
+</a>
+
+</div>
+
+</div>
+
+<div class="heroIcon">
+
+<i class="fa-solid fa-file-arrow-up"></i>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- Converter -->
-
-<section class="converter">
+<section id="converter" class="converterSection">
 
 <div class="container">
 
-<div class="converterBox">
-
 <h2>
 
-Convert Your File
+Convert Your Files
 
 </h2>
 
-<div class="selectRow">
+<p class="subtitle">
 
-<div>
+Upload your file, choose the output format and convert instantly.
 
-<label>Convert From</label>
+</p>
+
+<div class="converterBox">
+
+<div class="row">
+
+<div class="inputGroup">
+
+<label>
+
+Convert From
+
+</label>
 
 <select id="fromFormat">
 
-<option value="pdf">PDF</option>
+<option>PDF</option>
 
-<option value="docx">Word</option>
+<option>Word</option>
 
-<option value="jpg">JPG</option>
+<option>JPG</option>
 
-<option value="png">PNG</option>
+<option>PNG</option>
 
-<option value="xlsx">Excel</option>
+<option>Excel</option>
 
-<option value="pptx">PowerPoint</option>
+<option>PowerPoint</option>
 
-<option value="html">HTML</option>
+<option>HTML</option>
 
-<option value="txt">Text</option>
+<option>Text</option>
 
 </select>
 
 </div>
 
-<div>
+<div class="inputGroup">
 
-<label>Convert To</label>
+<label>
+
+Convert To
+
+</label>
 
 <select id="toFormat">
 
+<option>Word</option>
+
 </select>
 
 </div>
 
 </div>
 
-<div class="uploadArea" id="dropArea">
+<div class="uploadArea">
 
 <i class="fa-solid fa-cloud-arrow-up"></i>
 
 <h3>
 
-Drag & Drop File
+Drag & Drop File Here
 
 </h3>
 
 <p>
 
-or click below
+or
 
 </p>
 
@@ -149,23 +196,23 @@ or click below
 
 <button id="convertBtn" class="convertBtn">
 
-<i class="fa-solid fa-rotate"></i>
-
-Convert Now
+Convert File
 
 </button>
 
-<div class="progressBox">
+<progress
+id="progressBar"
+value="0"
+max="100"
+style="display:none;"></progress>
 
-<progress id="progressBar" value="0" max="100"></progress>
+<a
+id="downloadBtn"
+href="#"
+class="downloadBtn"
+style="display:none;">
 
-</div>
-
-<a id="downloadBtn" class="downloadBtn" style="display:none;">
-
-<i class="fa-solid fa-download"></i>
-
-Download File
+Download Converted File
 
 </a>
 
@@ -175,9 +222,7 @@ Download File
 
 </section>
 
-<!-- Supported Formats -->
-
-<section class="formats">
+<section id="formats">
 
 <div class="container">
 
@@ -187,51 +232,49 @@ Supported Conversions
 
 </h2>
 
-<div class="grid">
+<p class="subtitle">
 
-<div class="card">
-
-<h3>PDF</h3>
-
-<p>
-
-PDF → Word<br>
-
-PDF → JPG<br>
-
-PDF → PNG<br>
-
-PDF → Excel<br>
-
-PDF → PowerPoint<br>
-
-PDF → Text
+Choose any conversion below.
 
 </p>
+
+<div class="converterGrid">
+<div class="converterCard">
+
+<i class="fa-solid fa-file-pdf"></i>
+
+<h3>PDF Conversions</h3>
+
+<ul>
+
+<li>PDF → Word</li>
+<li>PDF → JPG</li>
+<li>PDF → PNG</li>
+<li>PDF → Excel</li>
+<li>PDF → PowerPoint</li>
+<li>PDF → Text</li>
+
+</ul>
 
 </div>
 
-<div class="card">
+<div class="converterCard">
 
-<h3>To PDF</h3>
+<i class="fa-solid fa-file-export"></i>
 
-<p>
+<h3>Convert To PDF</h3>
 
-Word → PDF<br>
+<ul>
 
-JPG → PDF<br>
+<li>Word → PDF</li>
+<li>JPG → PDF</li>
+<li>PNG → PDF</li>
+<li>Excel → PDF</li>
+<li>PowerPoint → PDF</li>
+<li>HTML → PDF</li>
+<li>Text → PDF</li>
 
-PNG → PDF<br>
-
-Excel → PDF<br>
-
-PowerPoint → PDF<br>
-
-HTML → PDF<br>
-
-Text → PDF
-
-</p>
+</ul>
 
 </div>
 
@@ -240,8 +283,6 @@ Text → PDF
 </div>
 
 </section>
-
-<!-- Features -->
 
 <section class="features">
 
@@ -249,49 +290,65 @@ Text → PDF
 
 <h2>
 
-Why Use VidToolkit Pro?
+Why Choose VidToolkit Pro?
 
 </h2>
 
 <div class="featureGrid">
 
-<div class="feature">
+<div class="featureCard">
 
 <i class="fa-solid fa-bolt"></i>
 
-<h3>Fast</h3>
+<h3>Fast Conversion</h3>
 
-<p>Quick conversions.</p>
+<p>
+
+Convert files in seconds.
+
+</p>
 
 </div>
 
-<div class="feature">
+<div class="featureCard">
 
 <i class="fa-solid fa-lock"></i>
 
 <h3>Secure</h3>
 
-<p>Your files remain private.</p>
+<p>
+
+Your files remain private.
+
+</p>
 
 </div>
 
-<div class="feature">
+<div class="featureCard">
 
 <i class="fa-solid fa-mobile-screen"></i>
 
-<h3>Responsive</h3>
+<h3>Mobile Friendly</h3>
 
-<p>Works on mobile and desktop.</p>
+<p>
+
+Works on every device.
+
+</p>
 
 </div>
 
-<div class="feature">
+<div class="featureCard">
 
 <i class="fa-solid fa-cloud"></i>
 
-<h3>No Installation</h3>
+<h3>Cloud Based</h3>
 
-<p>Convert directly in your browser.</p>
+<p>
+
+No software installation required.
+
+</p>
 
 </div>
 
@@ -301,9 +358,7 @@ Why Use VidToolkit Pro?
 
 </section>
 
-<!-- FAQ -->
-
-<section class="faq">
+<section class="faqSection">
 
 <div class="container">
 
@@ -313,19 +368,29 @@ Frequently Asked Questions
 
 </h2>
 
+<div class="faq">
+
 <details>
 
 <summary>Is this converter free?</summary>
 
-<p>Yes, basic conversion is completely free.</p>
+<p>
+
+Yes. All basic conversions are free.
+
+</p>
 
 </details>
 
 <details>
 
-<summary>Are my files secure?</summary>
+<summary>Are my uploaded files secure?</summary>
 
-<p>Your uploaded files are processed securely.</p>
+<p>
+
+Yes. Files are processed securely and removed automatically.
+
+</p>
 
 </details>
 
@@ -333,23 +398,43 @@ Frequently Asked Questions
 
 <summary>Which formats are supported?</summary>
 
-<p>PDF, Word, JPG, PNG, Excel, PowerPoint, HTML and Text.</p>
+<p>
+
+PDF, Word, Excel, PowerPoint, JPG, PNG, HTML and Text.
+
+</p>
 
 </details>
 
 </div>
 
-</section>
+</div>
 
-<!-- Footer -->
+</section>
 
 <footer>
 
+<div class="container">
+
+<h2>
+
+VidToolkit Pro
+
+</h2>
+
 <p>
 
-© 2026 VidToolkit Pro
+Professional creator tools and free online file converters.
 
 </p>
+
+<p>
+
+© 2026 VidToolkit Pro. All Rights Reserved.
+
+</p>
+
+</div>
 
 </footer>
 
