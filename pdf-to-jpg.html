@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF to JPG - VidToolkit</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; background: #0f172a; color: white; }
+   .box { border: 2px dashed #38bdf8; padding: 40px; border-radius: 12px; cursor: pointer; }
+    #progress { margin-top: 20px; color: #38bdf8; }
+    #download { margin-top: 20px; display: none; }
+    #download a { background: #38bdf8; color: black; padding: 12px 24px; border-radius: 8px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>PDF to JPG Converter</h1>
+  <p>Upload a PDF and get JPG images</p>
+  
+  <div class="box" onclick="document.getElementById('file').click()">
+    Click to Upload PDF
+    <input type="file" id="file" accept=".pdf" style="display:none">
+  </div>
+  
+  <div id="progress"></div>
+  <div id="download"></div>
+
+  <script>
+    // 1. Init Supabase - REPLACE with your keys
+    const supabase = window.supabase.createClient(
+      'https://iqciwusykvwnbhitucoe.supabase.co',
+      'sb_publishable_YOUR_PUBLISHABLE_KEY_HERE'
+    )
+    
+    const API_URL = 'https://vidtoolkit-bmx8fawdb-vid-toolkit.vercel.app/api/pdf-to-jpg'
+    
+    document.getElementById('file').addEventListener('change', async (e) => {
+      const file = e.target.files[0]
+      if (!file) return
+      
+      try {
+        showProgress('Uploading PDF...')
+        
+        // 2. Upload PDF to Supabase Storage
+        const { data: uploadData, error } = await supabase.storage
+        .from('uploads')
+        .upload(`temp/${Date.now()}-${file.name}`, file)
+        
+        if(error) throw error
+        const { data: urlData } = supabase.storage.from('uploads').getPublicUrl(uploadData.path)
+        const fileUrl = urlData.publicUrl
+
+        showProgress('Converting to JPG...')
+        
+        // 3. Call Vercel API
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileUrl })
+        })
+        
+        const result = await res.json()
+        if(!res.ok) throw new Error(result.error)
+        
+        showProgress('Done!')
+        showDownload(result.downloadUrl)
+        
+      } catch(err) {
+        showProgress('Error: ' + err.message)
+      }
+    })
+    
+    function showProgress(msg) {
+      document.getElementById('progress').innerText = msg
+    }
+    
+    function showDownload(url) {
+      document.getElementById('download').style.display = 'block'
+      document.getElementById('download').innerHTML = `<a href="${url}" target="_blank">Download JPG</a>`
+    }
+  </script>
+</body>
+</html>
