@@ -1,90 +1,89 @@
-<header>
-    <h1>VidToolkit Pro</h1>
-    <a href="index.html">← Home</a>
-</header>
+<div class="converter-section">
 
-<section class="hero">
-    <h2>Universal File Converter</h2>
-    <p>Convert PDF, Word, Excel, Images and more.</p>
-</section>
+<h2>Choose Conversion</h2>
 
-<div class="converter-container">
+<div class="converter-grid">
 
-    <div class="converter-section">
+<div class="converter-card" data-from="PDF" data-to="Word">
+<h3>📄 PDF → Word</h3>
+<p>Convert PDF documents to DOCX.</p>
+</div>
 
-        <h2>Convert Files</h2>
+<div class="converter-card" data-from="PDF" data-to="JPG">
+<h3>🖼 PDF → JPG</h3>
+<p>Extract PDF pages as JPG images.</p>
+</div>
 
-        <div class="upload-box">
+<div class="converter-card" data-from="PDF" data-to="PNG">
+<h3>🖼 PDF → PNG</h3>
+<p>Convert PDF pages into PNG images.</p>
+</div>
 
-            <label>Convert From</label>
+<div class="converter-card" data-from="PDF" data-to="Excel">
+<h3>📊 PDF → Excel</h3>
+<p>Convert tables from PDF to Excel.</p>
+</div>
 
-            <select id="fromFormat">
-                <option>PDF</option>
-                <option>Word</option>
-                <option>JPG</option>
-                <option>PNG</option>
-                <option>Excel</option>
-                <option>PowerPoint</option>
-                <option>HTML</option>
-                <option>Text</option>
-            </select>
+<div class="converter-card" data-from="PDF" data-to="PowerPoint">
+<h3>📽 PDF → PowerPoint</h3>
+<p>Create editable PPT slides.</p>
+</div>
 
-            <br><br>
+<div class="converter-card" data-from="PDF" data-to="Text">
+<h3>📑 PDF → Text</h3>
+<p>Extract text from PDF.</p>
+</div>
 
-            <label>Convert To</label>
+<div class="converter-card" data-from="Word" data-to="PDF">
+<h3>📝 Word → PDF</h3>
+<p>Convert DOCX into PDF.</p>
+</div>
 
-            <select id="toFormat">
-                <option>Word</option>
-            </select>
+<div class="converter-card" data-from="JPG" data-to="PDF">
+<h3>🖼 JPG → PDF</h3>
+<p>Create PDF from JPG images.</p>
+</div>
 
-            <br><br>
+<div class="converter-card" data-from="PNG" data-to="PDF">
+<h3>🖼 PNG → PDF</h3>
+<p>Create PDF from PNG images.</p>
+</div>
 
-            <input type="file" id="fileInput">
+<div class="converter-card" data-from="Excel" data-to="PDF">
+<h3>📊 Excel → PDF</h3>
+<p>Convert spreadsheets into PDF.</p>
+</div>
 
-            <br><br>
+<div class="converter-card" data-from="PowerPoint" data-to="PDF">
+<h3>📽 PowerPoint → PDF</h3>
+<p>Export presentations to PDF.</p>
+</div>
 
-            <button class="convert-btn" id="convertBtn">
-                Convert File
-            </button>
+<div class="converter-card" data-from="HTML" data-to="PDF">
+<h3>🌐 HTML → PDF</h3>
+<p>Convert webpages into PDF.</p>
+</div>
 
-            <br><br>
+<div class="converter-card" data-from="Text" data-to="PDF">
+<h3>📄 Text → PDF</h3>
+<p>Create PDF from TXT files.</p>
+</div>
 
-            <progress id="progressBar" value="0" max="100" style="width:100%;display:none;"></progress>
+<div class="converter-card" data-from="JPG" data-to="PNG">
+<h3>🖼 JPG → PNG</h3>
+<p>Convert JPG to PNG.</p>
+</div>
 
-            <br><br>
+<div class="converter-card" data-from="PNG" data-to="JPG">
+<h3>🖼 PNG → JPG</h3>
+<p>Convert PNG to JPG.</p>
+</div>
 
-            <a href="#" id="downloadBtn" class="convert-btn" style="display:none;">
-                Download File
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="converter-section">
-
-        <h2>Supported Formats</h2>
-
-        <div class="converter-grid">
-
-            <div class="converter-card">
-                <h3>PDF</h3>
-                <p>PDF → Word, JPG, PNG, Excel, PowerPoint, Text</p>
-            </div>
-
-            <div class="converter-card">
-                <h3>To PDF</h3>
-                <p>Word, JPG, PNG, Excel, PowerPoint, HTML, Text → PDF</p>
-            </div>
-
-        </div>
-
-    </div>
+<div class="converter-card" data-from="WEBP" data-to="JPG">
+<h3>🖼 WEBP → JPG</h3>
+<p>Convert WEBP to JPG.</p>
+</div>
 
 </div>
 
-<footer>
-    <p>© 2026 VidToolkit Pro</p>
-</footer>
-
-<script src="js/converter.js"></script>
+</div>
